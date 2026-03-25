@@ -18,7 +18,10 @@
   font-weight: 400;
   margin: 32px 16px 64px 16px;
   text-align: left;
-  line-height: 12px;
+  line-height: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .fieldLabel {
@@ -78,7 +81,7 @@
   border: 1.348px solid var(--text-blue);
   background: var(--bg);
   font-family: var(--sans);
-  width: 90%;
+  width: 100%;
 }
 
 /* .interests-section {
@@ -139,4 +142,9 @@
   text-transform: uppercase;
   gap: 64px;
   padding-right: 20px;
+}
+
+footer {
+  background: var(--bg);
+  height: 120px;
 }
