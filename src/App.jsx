@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 /* import StartPage from './pages/StartPage' */
 import ProfileForm from "./pages/ProfileForm";
 /* import ResultPage from './pages/ResultPage' */
+import StartPage from "./pages/StartPage";
 
 export default function App() {
   const [profileData, setProfileData] = useState({
@@ -15,10 +16,15 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* <Route
+        <Route
           path="/"
-          element={<StartPage profileData={profileData} setProfileData={setProfileData} />}
-        /> */}
+          element={
+            <StartPage
+              profileData={profileData}
+              setProfileData={setProfileData}
+            />
+          }
+        />
         <Route
           path="/profile"
           element={
