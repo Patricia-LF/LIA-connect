@@ -1,5 +1,5 @@
 /* Outer container — sets the canvas size and background */
-.co-scene {
+.coScene {
   width: 460px;
   height: 460px;
   position: relative;
@@ -8,7 +8,7 @@
 
 /* The grid rotates slowly back and forth (0 → 360 → 0 degrees).
 ease-in-out makes the rotation accelerate and decelerate smoothly.*/
-.co-grid {
+.coGrid {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -16,9 +16,15 @@ ease-in-out makes the rotation accelerate and decelerate smoothly.*/
 }
 
 @keyframes co-spin {
-  0%   { transform: translate(-50%, -50%) rotate(0deg); }
-  50%  { transform: translate(-50%, -50%) rotate(360deg); }
-  100% { transform: translate(-50%, -50%) rotate(0deg); }
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  50% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
 }
 
 /* Each circle wrapper is positioned at the grid's origin (0, 0).
