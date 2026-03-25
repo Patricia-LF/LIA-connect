@@ -1,126 +1,151 @@
-import { useNavigate } from 'react-router-dom'
-import { interests } from '../data/interests'
-import './ProfileForm.css'
+import { useNavigate } from "react-router-dom";
+import { interests } from "../data/interests";
+import { companies } from "../data/companies";
+import styles from "./ProfileForm.module.css";
 
 export default function ProfileForm({ profileData, setProfileData }) {
-  const navigate = useNavigate()
-  const isStudent = profileData.role === 'student'
+  const navigate = useNavigate();
+  const isStudent = profileData.role === "student";
 
   function handleNameChange(e) {
-    setProfileData(prev => ({ ...prev, name: e.target.value }))
+    setProfileData((prev) => ({ ...prev, name: e.target.value }));
   }
 
   function handleEducationChange(e) {
-    setProfileData(prev => ({ ...prev, education: e.target.value }))
+    setProfileData((prev) => ({ ...prev, education: e.target.value }));
   }
 
   function toggleInterest(id) {
-    setProfileData(prev => {
-      const already = prev.interests.includes(id)
+    setProfileData((prev) => {
+      const already = prev.interests.includes(id);
       return {
         ...prev,
         interests: already
-          ? prev.interests.filter(i => i !== id)
+          ? prev.interests.filter((i) => i !== id)
           : [...prev.interests, id],
-      }
-    })
+      };
+    });
   }
 
   function handleSubmit() {
-    if (!profileData.name.trim()) return
-    if (isStudent && !profileData.education) return
-    if (profileData.interests.length === 0) return
-    navigate('/result')
+    if (!profileData.name.trim()) return;
+    if (isStudent && !profileData.education) return;
+    if (profileData.interests.length === 0) return;
+    navigate("/result");
   }
 
   const isValid =
     profileData.name.trim() &&
     profileData.interests.length > 0 &&
-    (!isStudent || profileData.education)
+    (!isStudent || profileData.education);
 
   return (
-    <div className="profile-page">
-      <div className="profile-container">
-        <p className="profile-role-label">
-          {isStudent ? 'Student' : 'Företag'}
+    <div className={styles["profile-page"]}>
+      <div className={styles["profile-container"]}>
+        <p className={styles["profile-role-label"]}>
+          {isStudent ? "Student" : "Företag"}
         </p>
-        <h1 className="profile-heading">
-          {isStudent ? 'Berätta om dig' : 'Berätta om er'}
+        <h1 className={styles["profile-heading"]}>
+          {isStudent ? "Berätta kort om dig själv" : "Berätta kort om er"}
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="109"
+            height="2"
+            viewBox="0 0 109 2"
+            fill="none"
+          >
+            <path
+              d="M0 0.673828H108.048"
+              stroke="#E51536"
+              strokeWidth="1.34758"
+            />
+          </svg>
         </h1>
 
-        <div className="profile-fields">
-          <div className="field-group">
-            <label className="field-label" htmlFor="name">
-              {isStudent ? 'Ditt namn' : 'Företagsnamn'}
+        {/*  <p className={styles.fieldLabel}>
+          {isStudent
+            ? "Välj de områden som du är intresserad av"
+            : "Välj de områden som bäst beskriver er verksamhet"}
+        </p> */}
+
+        {isStudent && (
+          <div className={styles["field-group"]}>
+            <label className={styles["field-label"]} htmlFor="education">
+              Utbildning
+            </label>
+            <select
+              id="education"
+              className={styles["field-select"]}
+              value={profileData.education}
+              onChange={handleEducationChange}
+            >
+              <option value="">Välj utbildning</option>
+              <option value="webbutveckling">Webbutveckling</option>
+              <option value="digital-design">Digital Design</option>
+            </select>
+          </div>
+        )}
+
+        <div className={styles["profile-fields"]}>
+          <div className={styles["field-group"]}>
+            <label className={styles["field-label"]} htmlFor="name">
+              {isStudent ? "Namn" : "Företagsnamn"}
             </label>
             <input
               id="name"
               type="text"
-              className="field-input"
-              placeholder={isStudent ? 'Förnamn Efternamn' : 'Företagets namn'}
+              className={styles.fieldInput}
+              placeholder={isStudent ? "Förnamn Efternamn" : "Företagets namn"}
               value={profileData.name}
               onChange={handleNameChange}
               autoComplete="off"
+              list={!isStudent ? "company-list" : undefined}
             />
+            {!isStudent && (
+              <datalist id="company-list">
+                {companies.map((company) => (
+                  <option key={company.id} value={company.name} />
+                ))}
+              </datalist>
+            )}
           </div>
-
-          {isStudent && (
-            <div className="field-group">
-              <label className="field-label" htmlFor="education">
-                Utbildning
-              </label>
-              <select
-                id="education"
-                className="field-input field-select"
-                value={profileData.education}
-                onChange={handleEducationChange}
-              >
-                <option value="">Välj utbildning</option>
-                <option value="webbutveckling">Webbutveckling</option>
-                <option value="digital-design">Digital Design</option>
-              </select>
-            </div>
-          )}
         </div>
 
-        <div className="interests-section">
-          <p className="field-label">
-            {isStudent
-              ? 'Vad är du intresserad av?'
-              : 'Vad jobbar ni med eller söker hos en student?'}
-          </p>
-          <p className="interests-hint">Välj så många du vill</p>
+        <div className={styles["interests-section"]}>
+          <p className={styles["interests-hint"]}>Välj så många du vill</p>
 
-          <div className="interests-grid">
-            {interests.map(interest => {
-              const selected = profileData.interests.includes(interest.id)
+          <div className={styles["interests-grid"]}>
+            {interests.map((interest) => {
+              const selected = profileData.interests.includes(interest.id);
               return (
                 <button
                   key={interest.id}
-                  className={`interest-btn ${selected ? 'selected' : ''}`}
-                  style={{
-                    '--interest-color': interest.color,
-                  }}
+                  className={`${styles["interest-btn"]} ${selected ? styles.selected : ""}`}
+                  style={{ "--interest-color": interest.color }}
                   onClick={() => toggleInterest(interest.id)}
                   type="button"
                   aria-pressed={selected}
                 >
                   {interest.label}
                 </button>
-              )
+              );
             })}
           </div>
         </div>
 
         <button
-          className="submit-btn"
+          className={styles["submit-btn"]}
           onClick={handleSubmit}
           disabled={!isValid}
           type="button"
         >
-          Skapa din profil
+          Skapa din profil{" "}
+          <img
+            src="src/assets/arrow-right.svg"
+            className={styles["sub-btn-img"]}
+          ></img>
         </button>
       </div>
     </div>
-  )
+  );
 }
