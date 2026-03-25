@@ -9,6 +9,7 @@ export default function App() {
     role: "student", // tillfälligt hårdkodat, annars null,        // 'student' | 'company'
     name: "",
     education: "", // used by students
+    company: "", // used by companies
     interests: [], // array of interest-id:s
   });
 

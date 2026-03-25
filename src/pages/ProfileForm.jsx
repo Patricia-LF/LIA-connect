@@ -34,6 +34,7 @@ export default function ProfileForm({ profileData, setProfileData }) {
   function handleSubmit() {
     if (!profileData.name.trim()) return;
     if (isStudent && !profileData.education) return;
+    if (!isStudent && !profileData.company.trim()) return;
     if (profileData.interests.length === 0) return;
     navigate("/result");
   }
@@ -73,12 +74,15 @@ export default function ProfileForm({ profileData, setProfileData }) {
         </p> */}
 
         <div className={styles["field-group"]}>
-          <label className={styles["field-label"]} htmlFor="education">
+          <label
+            className={styles["field-label"]}
+            htmlFor={isStudent ? "education" : "company"}
+          >
             {isStudent ? "Utbildning" : "Företag"}
           </label>
           {isStudent ? (
             <select
-              id="education"
+              id={isStudent ? "education" : "company"}
               className={styles["field-select"]}
               value={profileData.education}
               onChange={handleEducationChange}
