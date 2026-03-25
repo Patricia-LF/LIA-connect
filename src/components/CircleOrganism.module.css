@@ -1,0 +1,47 @@
+/* Outer container — sets the canvas size and background */
+.coScene {
+  width: 460px;
+  height: 460px;
+  position: relative;
+  background: transparent;
+}
+
+/* The grid rotates slowly back and forth (0 → 360 → 0 degrees).
+ease-in-out makes the rotation accelerate and decelerate smoothly.*/
+.coGrid {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  animation: co-spin 40s ease-in-out infinite;
+}
+
+@keyframes co-spin {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  50% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+}
+
+/* Each circle wrapper is positioned at the grid's origin (0, 0).
+   The JS animation loop sets its transform to translate + scale each frame.
+   transform-origin: 0 0 means scaling grows outward from the grid center,
+   which mirrors Zim's normalize("reg", CENTER). */
+.co-wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform-origin: 0 0;
+}
+
+/* The circle itself is centered on its wrapper's origin point
+   via translate(-50%, -50%) */
+.co-circle {
+  position: absolute;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
