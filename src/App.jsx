@@ -6,7 +6,7 @@ import ProfileForm from "./pages/ProfileForm";
 
 export default function App() {
   const [profileData, setProfileData] = useState({
-    role: "student", // tillfälligt hårdkodat, annars null,        // 'student' | 'company'
+    role: "company", // tillfälligt hårdkodat, annars null,        // 'student' | 'company'
     name: "",
     education: "", // used by students
     interests: [], // array of interest-id:s
