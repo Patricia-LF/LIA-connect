@@ -1,9 +1,9 @@
 import { useEffect, useRef } from "react";
-import "./CircleOrganism.css";
+import styles from "./CircleOrganism.module.css";
 
 // --- Tweak these constants to adjust the animation ---
 
-const COLORS     = [
+const COLORS = [
   "#FFE44B",
   "#FEA831",
   "#B6F101",
@@ -11,21 +11,21 @@ const COLORS     = [
   "#C31351",
   "#A3A9FF",
   "#F98FF1",
-  "#333DEC"
+  "#333DEC",
 ];
 
-const COLS = 4;           // number of columns in the grid
-const ROWS = 4;           // number of rows in the grid
-const SPACING_X = 72;     // horizontal spacing between circles (px)
+const COLS = 4; // number of columns in the grid
+const ROWS = 4; // number of rows in the grid
+const SPACING_X = 72; // horizontal spacing between circles (px)
 
-const GAP_MIN = 22;       // minimum vertical gap between rows (px) — when circles are smallest
-const GAP_MAX = 95;       // maximum vertical gap between rows (px) — when circles are largest
+const GAP_MIN = 22; // minimum vertical gap between rows (px) — when circles are smallest
+const GAP_MAX = 95; // maximum vertical gap between rows (px) — when circles are largest
 
-const SCALE_MIN = 0.4;    // smallest scale a circle reaches during its pulse
-const SCALE_MAX = 2;      // largest scale a circle reaches during its pulse
+const SCALE_MIN = 0.4; // smallest scale a circle reaches during its pulse
+const SCALE_MAX = 2; // largest scale a circle reaches during its pulse
 
-const PERIOD = 3;         // duration of one full pulse cycle in seconds
-const ROW_OFFSET = 0.5;   // time offset in seconds between each row — creates the wave effect
+const PERIOD = 3; // duration of one full pulse cycle in seconds
+const ROW_OFFSET = 0.5; // time offset in seconds between each row — creates the wave effect
 
 // -----------------------------------------------------
 
@@ -48,11 +48,11 @@ function initCircleOrganism(gridEl, rafRef) {
       const x = col * SPACING_X - gW / 2;
 
       const wrap = document.createElement("div");
-      wrap.className = "co-wrap";
+      wrap.className = styles["co-wrap"];
       wrap.dataset.x = x; // store x so the animation loop can read it
 
       const circle = document.createElement("div");
-      circle.className = "co-circle";
+      circle.className = styles["co-circle"];
       circle.style.width = baseR * 2 + "px";
       circle.style.height = baseR * 2 + "px";
       circle.style.background = color;
@@ -64,7 +64,7 @@ function initCircleOrganism(gridEl, rafRef) {
     rows.push(rowWraps);
   }
 
-// Animation loop using requestAnimationFrame
+  // Animation loop using requestAnimationFrame
   let startTime = null;
 
   function animate(ts) {
@@ -128,16 +128,8 @@ export default function CircleOrganism() {
   }, []);
 
   return (
-    <div className="co-scene">
-      <div className="co-grid" ref={gridRef} />
+    <div className={styles.coScene}>
+      <div className={styles.coGrid} ref={gridRef} />
     </div>
   );
 }
-
-
-  
-
-  
-
-  
-
