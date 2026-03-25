@@ -15,6 +15,10 @@ export default function ProfileForm({ profileData, setProfileData }) {
     setProfileData((prev) => ({ ...prev, education: e.target.value }));
   }
 
+  function handleCompanyChange(e) {
+    setProfileData((prev) => ({ ...prev, company: e.target.value }));
+  }
+
   function toggleInterest(id) {
     setProfileData((prev) => {
       const already = prev.interests.includes(id);
@@ -46,7 +50,7 @@ export default function ProfileForm({ profileData, setProfileData }) {
           {isStudent ? "Student" : "Företag"}
         </p>
         <h1 className={styles["profile-heading"]}>
-          {isStudent ? "Berätta kort om dig själv" : "Berätta kort om er"}
+          {isStudent ? "Berätta kort om dig" : "Berätta kort om er"}
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="109"
@@ -68,11 +72,11 @@ export default function ProfileForm({ profileData, setProfileData }) {
             : "Välj de områden som bäst beskriver er verksamhet"}
         </p> */}
 
-        {isStudent && (
-          <div className={styles["field-group"]}>
-            <label className={styles["field-label"]} htmlFor="education">
-              Utbildning
-            </label>
+        <div className={styles["field-group"]}>
+          <label className={styles["field-label"]} htmlFor="education">
+            {isStudent ? "Utbildning" : "Företag"}
+          </label>
+          {isStudent ? (
             <select
               id="education"
               className={styles["field-select"]}
@@ -83,36 +87,49 @@ export default function ProfileForm({ profileData, setProfileData }) {
               <option value="webbutveckling">Webbutveckling</option>
               <option value="digital-design">Digital Design</option>
             </select>
-          </div>
-        )}
-
-        <div className={styles["profile-fields"]}>
-          <div className={styles["field-group"]}>
-            <label className={styles["field-label"]} htmlFor="name">
-              {isStudent ? "Namn" : "Företagsnamn"}
-            </label>
-            <input
-              id="name"
-              type="text"
-              className={styles.fieldInput}
-              placeholder={isStudent ? "Förnamn Efternamn" : "Företagets namn"}
-              value={profileData.name}
-              onChange={handleNameChange}
-              autoComplete="off"
-              list={!isStudent ? "company-list" : undefined}
-            />
-            {!isStudent && (
+          ) : (
+            <>
+              <input
+                id="education"
+                type="text"
+                className={styles.fieldInput}
+                placeholder="Sök företag..."
+                value={profileData.company}
+                onChange={handleCompanyChange}
+                list="company-list"
+                autoComplete="off"
+              />
               <datalist id="company-list">
                 {companies.map((company) => (
                   <option key={company.id} value={company.name} />
                 ))}
               </datalist>
-            )}
+            </>
+          )}
+        </div>
+
+        <div className={styles["profile-fields"]}>
+          <div className={styles["field-group"]}>
+            <label className={styles["field-label"]} htmlFor="name">
+              Namn
+            </label>
+            <input
+              id="name"
+              type="text"
+              className={styles.fieldInput}
+              placeholder="Förnamn Efternamn"
+              value={profileData.name}
+              onChange={handleNameChange}
+              autoComplete="off"
+              list={!isStudent ? "company-list" : undefined}
+            />
           </div>
         </div>
 
         <div className={styles["interests-section"]}>
-          <p className={styles["interests-hint"]}>Välj så många du vill</p>
+          <p className={styles["interests-hint"]}>
+            {isStudent ? "Välj dina intressen" : "Välj era arbetsområden"}
+          </p>
 
           <div className={styles["interests-grid"]}>
             {interests.map((interest) => {
@@ -146,6 +163,7 @@ export default function ProfileForm({ profileData, setProfileData }) {
           ></img>
         </button>
       </div>
+      <footer></footer>
     </div>
   );
 }
