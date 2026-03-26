@@ -1,4 +1,14 @@
-<svg width="26" height="23" viewBox="0 0 26 23" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M13.9966 20.9395L23.7163 11.2197L13.9966 1.5" stroke="#E4E9EB" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M23.7163 11.2188L1.49979 11.2188" stroke="#E4E9EB" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="1.31641" cy="7.54492" r="1.31641" fill="white"/>
+<circle cx="4.27539" cy="7.54492" r="1.31641" fill="white"/>
+<circle cx="10.7315" cy="1.8543" r="1.31641" transform="rotate(39.8979 10.7315 1.8543)" fill="white"/>
+<circle cx="1.31641" cy="1.31641" r="1.31641" transform="matrix(0.767189 -0.641421 -0.641421 -0.767189 10.5659 15.0957)" fill="white"/>
+<circle cx="7.23438" cy="7.54492" r="1.31641" fill="white"/>
+<circle cx="13.0015" cy="3.75274" r="1.31641" transform="rotate(39.8979 13.0015 3.75274)" fill="white"/>
+<circle cx="1.31641" cy="1.31641" r="1.31641" transform="matrix(0.767189 -0.641421 -0.641421 -0.767189 12.8359 13.1973)" fill="white"/>
+<circle cx="10.1934" cy="7.54492" r="1.31641" fill="white"/>
+<circle cx="15.2715" cy="5.65118" r="1.31641" transform="rotate(39.8979 15.2715 5.65118)" fill="white"/>
+<circle cx="1.31641" cy="1.31641" r="1.31641" transform="matrix(0.767189 -0.641421 -0.641421 -0.767189 15.106 11.2988)" fill="white"/>
+<circle cx="13.1523" cy="7.54492" r="1.31641" fill="white"/>
+<circle cx="17.5415" cy="7.54766" r="1.31641" transform="rotate(39.8979 17.5415 7.54766)" fill="white"/>
 </svg>
