@@ -9,12 +9,45 @@
 
 .profile {
   height: 100vh;
-  display: flex;
-  flex-direction: column;
+  /* display: flex;
+  flex-direction: column; */
 }
 
 .label {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   color: var(--text-blue);
   font-size: 2rem;
   font-family: var(--sans);
+  font-style: normal;
+  font-weight: 400;
+  padding: 32px 16px 0px 16px;
+  gap: 12px;
+}
+
+.name {
+  color: var(--text-blue);
+  font-size: 1rem;
+  font-family: var(--sans);
+  font-style: normal;
+  font-weight: 700;
+  letter-spacing: 0.15px;
+  text-transform: uppercase;
+  padding: 16px;
+  text-align: left;
+}
+
+.animation {
+  display: flex;
+  flex-direction: column;
+  gap: 200px;
+}
+
+.circle {
+  height: 50%;
+}
+
+.cards {
+  height: 100vh;
 }

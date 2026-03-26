@@ -21,10 +21,32 @@ export default function ResultPage({ profileData }) {
         {isStudent
           ? educationLabel[profileData.education]
           : profileData.company}
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="109"
+          height="2"
+          viewBox="0 0 109 2"
+          fill="none"
+        >
+          <path
+            d="M0 0.673828H108.048"
+            stroke="#E51536"
+            strokeWidth="1.34758"
+          />
+        </svg>
       </p>
-      <p>{profileData.name}</p>
-      <CircleOrganism interests={selectedInterests} />
-      <FeaturedCards selectedInterests={selectedInterests} />
+
+      <p className={styles.name}>{profileData.name}</p>
+
+      <div className={styles.animation}>
+        <div className={styles.circle}>
+          <CircleOrganism interests={selectedInterests} />
+        </div>
+
+        <div className={styles.cards}>
+          <FeaturedCards selectedInterests={selectedInterests} />
+        </div>
+      </div>
     </div>
   );
 }
