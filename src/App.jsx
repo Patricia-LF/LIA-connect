@@ -1,18 +1,17 @@
 import { useState } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-/* import StartPage from './pages/StartPage' */
-import ProfileForm from "./pages/ProfileForm";
-/* import ResultPage from './pages/ResultPage' */
 import StartPage from "./pages/StartPage";
 import Header from "./components/Header";
+import ProfileForm from "./pages/ProfileForm";
+import ResultPage from "./pages/ResultPage";
 
 export default function App() {
   const [profileData, setProfileData] = useState({
-    role: "company", // tillfälligt hårdkodat, annars null,        // 'student' | 'company'
-    name: "",
-    education: "", // used by students
-    company: "", // used by companies
-    interests: [], // array of interest-id:s
+    role: "student", // tillfälligt hårdkodat, annars null,        // 'student' | 'company'
+    name: "Patricia Frykberg", // tillfälligt hårdkodat, annars "",
+    education: "webbutvecling", // tillfälligt hårdkodat, annars "", // used by students
+    company: "",
+    interests: ["frontend", "ux"], // tillfälligt hårdkodat, annars [], // array of interest-id:s
   });
 
   return (
@@ -41,14 +40,16 @@ export default function App() {
             )
           }
         />
-        {/* <Route
+        <Route
           path="/result"
           element={
-            profileData.name
-              ? <ResultPage profileData={profileData} />
-              : <Navigate to="/" replace />
+            profileData.name ? (
+              <ResultPage profileData={profileData} />
+            ) : (
+              <Navigate to="/" replace />
+            )
           }
-        /> */}
+        />
       </Routes>
     </BrowserRouter>
   );
