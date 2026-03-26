@@ -55,10 +55,21 @@
   }
 }
 
-body {
+html,
+body,
+#root {
+  height: 100%;
   margin: 0;
   font-family: var(--sans);
 }
+
+body {
+  min-height: 100dvh;
+}
+
+/* body {
+  margin: 0;
+} */
 
 #root {
   /*  width: 100vw;
