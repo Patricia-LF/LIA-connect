@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import ProfileForm from "./pages/ProfileForm";
 /* import ResultPage from './pages/ResultPage' */
 import StartPage from "./pages/StartPage";
+import Header from "./components/Header";
 
 export default function App() {
   const [profileData, setProfileData] = useState({
@@ -15,6 +16,7 @@ export default function App() {
 
   return (
     <BrowserRouter>
+      <Header />
       <Routes>
         <Route
           path="/"
