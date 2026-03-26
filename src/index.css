@@ -57,6 +57,7 @@
 
 body {
   margin: 0;
+  font-family: var(--sans);
 }
 
 #root {
