@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import StartPage from "./pages/StartPage";
+import Header from "./components/Header";
 import ProfileForm from "./pages/ProfileForm";
 import ResultPage from "./pages/ResultPage";
 
