@@ -7,7 +7,7 @@ export default function FeaturedCards({ selectedInterests = [] }) {
   const CARD_H = 160;
   const trackH = n > 0 ? CARD_H + (n - 1) * PEEK : 0;
 
-  const [activeIndex, setActiveIndex] = useState(n - 1); // nedersta kortet aktivt
+  const [activeIndex, setActiveIndex] = useState(n - 1); // bottom card active
   const [expandedIndex, setExpandedIndex] = useState(null);
 
   const viewportRef = useRef(null);
@@ -96,13 +96,18 @@ export default function FeaturedCards({ selectedInterests = [] }) {
     };
   }, [expandedIndex, n, tickScroll]);
 
-  const handleCardClick = (index) => {
+  const handleCardClick = (interest, index) => {
     if (expandedIndex === index) {
-      setExpandedIndex(null); // stäng kortet
-    } else {
-      setExpandedIndex(index); // öppna kortet
-      setActiveIndex(index); // scrolla till kortet
-    }
+      setExpandedIndex(null);
+      return;
+    } // close card
+
+    if (activeIndex !== index) {
+      setActiveIndex(index);
+      return;
+    } // open card
+
+    setExpandedIndex(index); // scroll to card
   };
 
   if (n === 0) {
@@ -111,7 +116,7 @@ export default function FeaturedCards({ selectedInterests = [] }) {
 
   return (
     <div className={styles["fc-root"]}>
-      {/* ── Expanded card ── */}
+      {/* Expanded card */}
       {expandedIndex !== null && (
         <div
           className={styles["fc-expanded"]}
@@ -142,7 +147,7 @@ export default function FeaturedCards({ selectedInterests = [] }) {
         </div>
       )}
 
-      {/* ── Card stack ── */}
+      {/* Card stack */}
       {expandedIndex === null && (
         <div className={styles["fc-viewport"]} ref={viewportRef}>
           <div
@@ -155,9 +160,6 @@ export default function FeaturedCards({ selectedInterests = [] }) {
           >
             {selectedInterests.map((interest, index) => {
               const isActive = index === activeIndex;
-              const isExpanded = index === expandedIndex;
-              const showCard = expandedIndex === null || isExpanded; //show only when no card is open
-              if (!showCard) return null; //hide card stack
               return (
                 <div
                   key={interest.id}
@@ -166,30 +168,30 @@ export default function FeaturedCards({ selectedInterests = [] }) {
                     background: interest.color,
                     top: cardTop(index),
                     zIndex: index + 1,
-                    opacity: isExpanded ? 1 : isActive ? 1 : 0.42,
-                    boxShadow: isExpanded
+                    opacity: isActive ? 1 : 0.42,
+                    boxShadow: isActive
                       ? "0 16px 40px rgba(0,0,0,0.45)"
-                      : isActive
-                        ? "0 16px 40px rgba(0,0,0,0.45)"
-                        : "0 4px 16px rgba(0,0,0,0.18)",
-                    transform: isExpanded
-                      ? "scale(1.04)"
-                      : isActive
-                        ? "scale(1)"
-                        : "scale(0.96)",
-                    filter: isExpanded
-                      ? "none"
-                      : isActive
-                        ? "none"
-                        : "brightness(0.9)",
-                    cursor: isExpanded ? "default" : "pointer",
+                      : "0 4px 16px rgba(0,0,0,0.18)",
+                    transform: isActive ? "scale(1)" : "scale(0.96)",
+                    filter: isActive ? "none" : "brightness(0.9)",
                   }}
-                  onClick={() => !isExpanded && handleCardClick(index)}
+                  onClick={() => {
+                    if (expandedIndex === index) {
+                      // Om kortet redan är öppet → stäng
+                      setExpandedIndex(null);
+                    } else if (activeIndex !== index) {
+                      // Klick på ett annat kort → flytta fokus
+                      setActiveIndex(index);
+                    } else {
+                      // Klick på det aktiva kortet → expandera
+                      setExpandedIndex(index);
+                    }
+                  }}
                 >
                   <span className={styles["fc-label"]}>{interest.label}</span>
                   <span
                     className={styles["fc-hint"]}
-                    style={{ opacity: isActive && !isExpanded ? 1 : 0 }}
+                    style={{ opacity: isActive ? 1 : 0 }}
                   >
                     Tryck för att se frågor
                   </span>
@@ -199,20 +201,6 @@ export default function FeaturedCards({ selectedInterests = [] }) {
           </div>
         </div>
       )}
-
-      {/* ── Dots + scroll hint ── */}
-      <div className={styles["fc-bottom"]}>
-        <div className={styles["fc-dots"]}>
-          {selectedInterests.map((_, i) => (
-            <div
-              key={i}
-              className={`${styles["fc-dot"]}${i === activeIndex ? ` ${styles["fc-dot--active"]}` : ""}`}
-              onClick={() => setActiveIndex(i)}
-            />
-          ))}
-        </div>
-        <p className={styles["fc-scroll-hint"]}>Scrolla för att välja kort</p>
-      </div>
     </div>
   );
 }
