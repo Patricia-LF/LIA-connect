@@ -1,7 +1,8 @@
 /* Outer container — sets the canvas size and background */
-.coScene {
-  width: 460px;
-  height: 460px;
+.co-scene {
+  width: 100%;
+  max-width: 460px;
+  aspect-ratio: 1 / 1;
   position: relative;
   background: transparent;
 }
