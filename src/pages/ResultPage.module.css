@@ -1,0 +1,20 @@
+.fc-root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.profile {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  color: var(--text-blue);
+  font-size: 2rem;
+  font-family: var(--sans);
+}
