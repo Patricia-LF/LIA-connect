@@ -18,6 +18,12 @@
   max-width: 360px;
   flex: 1;
   overflow: hidden;
+  transition: opacity 0.3s ease;
+}
+
+.hidden {
+  opacity: 0;
+  pointer-events: none;
 }
 
 .fc-track {
@@ -38,8 +44,9 @@
   justify-content: space-between;
   cursor: pointer;
   transition:
-    opacity 0.4s ease,
-    box-shadow 0.4s ease;
+    opacity 0.35s ease,
+    box-shadow 0.35s ease,
+    transform 0.35s ease;
   align-items: flex-start;
 }
 
@@ -101,7 +108,7 @@
 }
 
 /* ── Overlay ────────────────────────────────────────────────── */
-.fc-overlay {
+/* .fc-overlay {
   position: absolute;
   inset: 0;
   display: flex;
@@ -114,13 +121,41 @@
   transition: opacity 0.35s ease;
   z-index: 100;
 }
+ */
+/* .fc-overlay.open {
+  opacity: 1;
+  pointer-events: all;
+} */
 
-.fc-overlay.open {
+.open {
   opacity: 1;
   pointer-events: all;
 }
 
-.fc-overlay-bg {
+.fc-expanded {
+  width: 100%;
+  max-width: 360px;
+  border-radius: 22px;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  animation: expandIn 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes expandIn {
+  from {
+    transform: scale(0.96) translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+
+/* .fc-overlay-bg {
   position: absolute;
   inset: 0;
   background: rgba(0, 0, 0, 0.45);
@@ -128,8 +163,8 @@
 
 .fc-overlay-card {
   position: relative;
-  width: 100vw;
-  /* max-width: 360px; */
+  width: 100%;
+  max-width: 360px;
   border-radius: 22px;
   padding: 28px 28px 32px;
   display: flex;
@@ -137,15 +172,17 @@
   gap: 20px;
   box-shadow: 0 24px 64px rgba(0, 0, 0, 0.55);
   transform: translateY(40px) scale(0.95);
+  filter: blur(2px);
   opacity: 0;
   transition:
     transform 0.5s cubic-bezier(0.34, 1.1, 0.64, 1),
     opacity 0.4s ease;
 }
 
-.fc-overlay.open .fc-overlay-card {
+.open .fc-overlay-card {
   transform: translateY(0) scale(1);
   opacity: 1;
+  filter: blur(0);
 }
 
 .fc-overlay-label {
@@ -160,7 +197,7 @@
   height: 1px;
   background: rgba(255, 255, 255, 0.2);
 }
-
+ */
 /* ── Frågor ─────────────────────────────────────────────────── */
 .fc-questions {
   list-style: none;
