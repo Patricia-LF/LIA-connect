@@ -15,9 +15,9 @@ export default function FeaturedCards({ selectedInterests = [] }) {
   const scrollRaf = useRef(null);
   const touchStartY = useRef(0);
 
-  const SCROLL_FRICTION = 0.88;
+  const SCROLL_FRICTION = 0.82;
   const SCROLL_SENSITIVITY = 0.3;
-  const STEP_THRESHOLD = PEEK * 0.6;
+  const STEP_THRESHOLD = PEEK * 0.4;
 
   const cardTop = (index) => index * PEEK;
 
@@ -34,12 +34,18 @@ export default function FeaturedCards({ selectedInterests = [] }) {
 
       setActiveIndex((prev) => {
         const next = prev + dir;
-        if (next < 0) return 0;
-        if (next > n - 1) return n - 1;
+
+        if (next < 0 || next > n - 1) {
+          scrollVelocity.current = 0; // stop momentum
+          if (scrollRaf.current) {
+            cancelAnimationFrame(scrollRaf.current);
+            scrollRaf.current = null;
+          }
+          return prev;
+        }
+
         return next;
       });
-
-      scrollVelocity.current -= dir * STEP_THRESHOLD;
     }
 
     if (Math.abs(scrollVelocity.current) > 2) {
@@ -58,16 +64,30 @@ export default function FeaturedCards({ selectedInterests = [] }) {
     const scrollingUp = e.deltaY < 0;
     const scrollingDown = e.deltaY > 0;
 
+    e.preventDefault();
+
     if ((isAtTop && scrollingUp) || (isAtBottom && scrollingDown)) {
-      scrollVelocity.current = 0;
-      return;
+      scrollVelocity.current = 0; // stop momentum
+
+      if (scrollRaf.current) {
+        cancelAnimationFrame(scrollRaf.current);
+        scrollRaf.current = null;
+      }
+      return; // stop where you are
     }
 
-    e.preventDefault();
+    const direction = Math.sign(e.deltaY);
+    const currentDirection = Math.sign(scrollVelocity.current);
+    // if user changes direction → reset
+    if (direction !== currentDirection) {
+      scrollVelocity.current = 0;
+    }
+
     scrollVelocity.current += e.deltaY * SCROLL_SENSITIVITY;
 
-    if (!scrollRaf.current)
+    if (!scrollRaf.current) {
       scrollRaf.current = requestAnimationFrame(tickScroll);
+    }
   };
 
   const handleTouchStart = (e) => {
@@ -160,6 +180,8 @@ export default function FeaturedCards({ selectedInterests = [] }) {
           >
             {selectedInterests.map((interest, index) => {
               const isActive = index === activeIndex;
+              const distance = Math.abs(index - activeIndex);
+              const scale = 1 - distance * 0.05;
               return (
                 <div
                   key={interest.id}
@@ -168,12 +190,12 @@ export default function FeaturedCards({ selectedInterests = [] }) {
                     background: interest.color,
                     top: cardTop(index),
                     zIndex: index + 1,
-                    opacity: isActive ? 1 : 0.42,
+                    /* opacity: isActive ? 1 : 0.5, */
+                    transform: `scale(${scale})`,
+                    filter: isActive ? "none" : "brightness(0.9)",
                     boxShadow: isActive
                       ? "0 16px 40px rgba(0,0,0,0.45)"
                       : "0 4px 16px rgba(0,0,0,0.18)",
-                    transform: isActive ? "scale(1)" : "scale(0.96)",
-                    filter: isActive ? "none" : "brightness(0.9)",
                   }}
                   onClick={() => {
                     if (expandedIndex === index) {
