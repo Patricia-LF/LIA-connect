@@ -11,7 +11,7 @@
 ease-in-out makes the rotation accelerate and decelerate smoothly.*/
 .coGrid {
   position: absolute;
-  top: 50%;
+  top: 40%;
   left: 50%;
   animation: co-spin 40s ease-in-out infinite;
 }

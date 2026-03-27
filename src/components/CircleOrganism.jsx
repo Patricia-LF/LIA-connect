@@ -4,22 +4,22 @@ import styles from "./CircleOrganism.module.css";
 // --- Tweak these constants to adjust the animation ---
 
 const COLORS = [
-  "#FFE44B",
-  "#FEA831",
-  "#B6F101",
-  "#00AB43",
-  "#C31351",
-  "#A3A9FF",
-  "#F98FF1",
-  "#333DEC",
+  "#ED8524",
+  "#1F5533",
+  "#2C8ABE",
+  "#019645",
+  "#E6513D",
+  "#BC3989",
+  "#672D6A",
+  "#016098",
 ];
 
 const COLS = 4; // number of columns in the grid
 const ROWS = 4; // number of rows in the grid
-const SPACING_X = 72; // horizontal spacing between circles (px)
+const SPACING_X = 40; // horizontal spacing between circles (px) // 72 * 0.55 ≈ 40
 
-const GAP_MIN = 22; // minimum vertical gap between rows (px) — when circles are smallest
-const GAP_MAX = 95; // maximum vertical gap between rows (px) — when circles are largest
+const GAP_MIN = 12; // minimum vertical gap between rows (px) — when circles are smallest // 22 * 0.55 ≈ 12
+const GAP_MAX = 52; // maximum vertical gap between rows (px) — when circles are largest // 95 * 0.55 ≈ 52
 
 const SCALE_MIN = 0.4; // smallest scale a circle reaches during its pulse
 const SCALE_MAX = 2; // largest scale a circle reaches during its pulse
@@ -42,7 +42,7 @@ function initCircleOrganism(gridEl, rafRef) {
   for (let row = 0; row < ROWS; row++) {
     const rowWraps = [];
     for (let col = 0; col < COLS; col++) {
-      const baseR = random(7, 14);
+      const baseR = random(4, 8); // const baseR = random(7, 14); 7–14 * 0.55 ≈ 4–8
       const color = COLORS[Math.floor(Math.random() * COLORS.length)];
       // Center the grid horizontally by offsetting from the grid's total width
       const x = col * SPACING_X - gW / 2;
