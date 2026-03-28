@@ -46,6 +46,8 @@ export default function FeaturedCards({ selectedInterests = [] }) {
 
         return next;
       });
+
+      scrollVelocity.current -= dir * STEP_THRESHOLD;
     }
 
     if (Math.abs(scrollVelocity.current) > 2) {
@@ -116,18 +118,18 @@ export default function FeaturedCards({ selectedInterests = [] }) {
     };
   }, [expandedIndex, n, tickScroll]);
 
-  const handleCardClick = (interest, index) => {
+  const handleCardClick = (index) => {
     if (expandedIndex === index) {
       setExpandedIndex(null);
       return;
-    } // close card
+    }
 
     if (activeIndex !== index) {
       setActiveIndex(index);
       return;
-    } // open card
+    }
 
-    setExpandedIndex(index); // scroll to card
+    setExpandedIndex(index); // Scroll to card
   };
 
   if (n === 0) {
@@ -137,33 +139,59 @@ export default function FeaturedCards({ selectedInterests = [] }) {
   return (
     <div className={styles["fc-root"]}>
       {/* Expanded card */}
-      {expandedIndex !== null && (
+      {expandedIndex !== null && selectedInterests[expandedIndex] && (
         <div
           className={styles["fc-expanded"]}
           style={{
             background: selectedInterests[expandedIndex].color,
           }}
         >
-          <span className={styles["fc-overlay-label"]}>
-            {selectedInterests[expandedIndex].label}
-          </span>
+          <p className={styles.interestOverlay}>
+            {selectedInterests[expandedIndex].bigLabel}
+          </p>
+          <div className={styles["fc-container"]}>
+            <div className={styles["fc-label-container"]}>
+              <div className={styles["fc-overlay-label-container"]}>
+                <span className={styles["fc-overlay-label"]}>
+                  {selectedInterests[expandedIndex].label}
+                </span>
+                <span
+                  className={styles["fc-close"]}
+                  onClick={() => setExpandedIndex(null)}
+                >
+                  <img src="src/assets/close.png"></img>
+                </span>
+              </div>
 
-          <div className={styles["fc-overlay-divider"]} />
+              <div className={styles.labelLine}></div>
+            </div>
+            <span className={styles.areas}>
+              {selectedInterests[expandedIndex].areas?.join(" ")}
+            </span>
+          </div>
 
-          <ul className={styles["fc-questions"]}>
-            {selectedInterests[expandedIndex].questions.map((q, i) => (
-              <li key={i} className={styles["fc-q"]}>
-                {q}
-              </li>
-            ))}
-          </ul>
+          {/* <div className={styles["fc-overlay-divider"]} /> */}
+          <div className={styles.questions}>
+            <h3 className={styles["q-title"]}>Bra att prata om</h3>
+            <ul className={styles["fc-questions"]}>
+              {selectedInterests[expandedIndex].questions?.map((q, i) => (
+                <li key={i} className={styles["fc-q"]}>
+                  {q}
+                </li>
+              ))}
+            </ul>
+          </div>
 
-          <span
-            className={styles["fc-close"]}
-            onClick={() => setExpandedIndex(null)}
-          >
-            Stäng
-          </span>
+          <div className={styles.attributes}>
+            <p>Det här söker företagen</p>
+            <ul className={styles["fc-attributes"]}>
+              {selectedInterests[expandedIndex].attributes?.map((a, i) => (
+                <li key={i} className={styles["fc-a"]}>
+                  {a}
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       )}
 
@@ -180,6 +208,7 @@ export default function FeaturedCards({ selectedInterests = [] }) {
           >
             {selectedInterests.map((interest, index) => {
               const isActive = index === activeIndex;
+              const isExpanded = index === expandedIndex;
               const distance = Math.abs(index - activeIndex);
               const scale = 1 - distance * 0.05;
               return (
@@ -197,26 +226,21 @@ export default function FeaturedCards({ selectedInterests = [] }) {
                       ? "0 16px 40px rgba(0,0,0,0.45)"
                       : "0 4px 16px rgba(0,0,0,0.18)",
                   }}
-                  onClick={() => {
-                    if (expandedIndex === index) {
-                      // Om kortet redan är öppet → stäng
-                      setExpandedIndex(null);
-                    } else if (activeIndex !== index) {
-                      // Klick på ett annat kort → flytta fokus
-                      setActiveIndex(index);
-                    } else {
-                      // Klick på det aktiva kortet → expandera
-                      setExpandedIndex(index);
-                    }
-                  }}
+                  onClick={() => handleCardClick(index)}
                 >
-                  <span className={styles["fc-label"]}>{interest.label}</span>
+                  <div className={styles.labelContainer}>
+                    <span className={styles["fc-label"]}>{interest.label}</span>
+                    <div className={styles.labelLine}></div>
+                    <span className={styles.areas}>{interest.areas}</span>
+                  </div>
+
                   <span
                     className={styles["fc-hint"]}
                     style={{ opacity: isActive ? 1 : 0 }}
                   >
                     Tryck för att se frågor
                   </span>
+                  <p className={styles.interestOverlay}>{interest.bigLabel}</p>
                 </div>
               );
             })}

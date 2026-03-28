@@ -5,7 +5,7 @@ export const interests = [
     id: "3d",
     label: "3D",
     color: "#672D6A",
-    areas: ["Modellering", "Rendering", "Material", "Interaktivitet"],
+    areas: ["Modellering • ", "Rendering • ", "Material • ", "Interaktivitet"],
     questions: [
       "Hur använder ni 3D i era projekt?",
       "Är 3D en del av upplevelsen, marknadsföringen eller båda?",
@@ -18,6 +18,7 @@ export const interests = [
       "Intresse för teknik och visualisering",
       "Förmåga att anpassa 3D till olika plattformar",
     ],
+    bigLabel: "3D",
   },
 
   {
@@ -25,14 +26,16 @@ export const interests = [
     label: "Branding",
     color: "#BC3989",
     areas: [
-      "Visuell identitet",
-      "Tone of voice",
-      "Koncept",
+      "Visuell identitet • ",
+      "Tone of voice • ",
+      "Koncept • ",
       "Varumärkesdesign",
     ],
     questions: [
-      "Hur bygger du/ni en stark och tydlig varumärkesidentitet?",
-      "Hur ser du/ni på balansen mellan strategi och design?",
+      "Hur jobbar ni med varumärke i digitala projekt?",
+      "Hur översätter ni ett varumärke till design i praktiken?",
+      "Får man jobba både strategiskt och visuellt?",
+      "Hur ser processen ut från idé till färdig identitet?",
     ],
     attributes: [
       "Stark visuell känsla",
@@ -40,16 +43,24 @@ export const interests = [
       "Förmåga att översätta strategi till design",
       "Intresse för kommunikation och uttryck",
     ],
+    bigLabel: "BRA",
   },
 
   {
     id: "motion",
     label: "Motion",
     color: "#019645",
-    areas: ["Animation", "After Effects", "Interaktion", "Storytelling"],
+    areas: [
+      "Animation • ",
+      "After Effects • ",
+      "Interaktion • ",
+      "Storytelling",
+    ],
     questions: [
-      "Vilka verktyg jobbar du/ni mest i när det gäller motion?",
-      "Hur använder du/ni animation för att förbättra upplevelsen?",
+      "Hur använder ni motion i era projekt?",
+      "Är animation mest för känsla, funktion eller båda?",
+      "Vilka verktyg använder ni för motion design?",
+      "Finns det möjlighet att jobba med både grafik och interaktion?",
     ],
     attributes: [
       "Känsla för timing och rörelse",
@@ -57,16 +68,19 @@ export const interests = [
       "Visuell känsla och berättande",
       "Intresse för detaljer och upplevelse",
     ],
+    bigLabel: "MOT",
   },
 
   {
     id: "fullstack",
     label: "Fullstack",
     color: "#016098",
-    areas: ["Frontend + backend", "API", "Komponenter", "Databaser"],
+    areas: ["Frontend + backend • ", "API • ", "Komponenter • ", "Databaser "],
     questions: [
-      "Hur jobbar du/ni med helheten mellan frontend och backend?",
-      "Hur ser din/er process ut från idé till färdig lösning?",
+      "Hur ser balansen ut mellan frontend och backend hos er?",
+      "Förväntas man kunna hela flödet från UI till databas?",
+      "Hur ser arbetsdagen ut för någon som jobbar fullstack?",
+      "Finns det möjlighet att fördjupa sig i ena delen över tid?",
     ],
     attributes: [
       "Bred teknisk förståelse",
@@ -74,6 +88,7 @@ export const interests = [
       "Problemlösning och självständighet",
       "Intresse för helheten, inte bara en del",
     ],
+    bigLabel: "FUL",
   },
 
   {
