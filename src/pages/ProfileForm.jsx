@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { interests } from "../data/interests";
 import { companies } from "../data/companies";
 import styles from "./ProfileForm.module.css";
+import Button from "../components/Button";
 
 export default function ProfileForm({ profileData, setProfileData }) {
   const navigate = useNavigate();
@@ -139,33 +140,24 @@ export default function ProfileForm({ profileData, setProfileData }) {
             {interests.map((interest) => {
               const selected = profileData.interests.includes(interest.id);
               return (
-                <button
+                <Button
                   key={interest.id}
-                  className={`${styles["interest-btn"]} ${selected ? styles.selected : ""}`}
-                  style={{ "--interest-color": interest.color }}
+                  variant="secondary"
+                  selected={selected}
+                  ariaPressed={selected}
                   onClick={() => toggleInterest(interest.id)}
-                  type="button"
-                  aria-pressed={selected}
+                  style={{ "--interest-color": interest.color }}
                 >
                   {interest.label}
-                </button>
+                </Button>
               );
             })}
           </div>
         </div>
 
-        <button
-          className={styles["submit-btn"]}
-          onClick={handleSubmit}
-          disabled={!isValid}
-          type="button"
-        >
+        <Button onClick={handleSubmit} disabled={!isValid} type="submit">
           Skapa din profil{" "}
-          <img
-            src="src/assets/arrow-right.svg"
-            className={styles["sub-btn-img"]}
-          ></img>
-        </button>
+        </Button>
       </div>
       <footer></footer>
     </div>
