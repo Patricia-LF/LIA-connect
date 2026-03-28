@@ -126,7 +126,6 @@ export default function ProfileForm({ profileData, setProfileData }) {
               value={profileData.name}
               onChange={handleNameChange}
               autoComplete="off"
-              list={!isStudent ? "company-list" : undefined}
             />
           </div>
         </div>
