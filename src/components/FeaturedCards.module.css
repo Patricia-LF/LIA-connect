@@ -114,6 +114,7 @@
 
 /*Expanded/open card*/
 .fc-expanded {
+  position: relative;
   display: flex;
   width: 97%;
   padding: 12px 10px;
