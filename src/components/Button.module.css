@@ -18,8 +18,7 @@
 .button-primary {
   background: var(--text-blue);
   color: var(--bg);
-  width: 100vw;
-  margin: 1rem;
+  width: 100%;
   padding: 1rem 0;
 }
 
@@ -47,7 +46,7 @@
   transform: scale(0.97);
 }
 
-.button-secondary.selected {
+.selected {
   background-color: var(--interest-color);
   color: var(--text-white);
   border: none;
