@@ -2,6 +2,7 @@
   height: 100vh;
   /* width: 100%; */
   margin: 0 auto;
+  padding: 0px 16px;
 }
 
 /* .profile-container {
@@ -16,7 +17,7 @@
   font-size: 2rem;
   font-family: var(--sans);
   font-weight: 400;
-  margin: 32px 16px 64px 16px;
+  margin: 32px 0px 64px 0px;
   text-align: left;
   line-height: 32px;
   display: flex;
@@ -32,7 +33,7 @@
   line-height: 24px;
   letter-spacing: 0.5px;
   width: 100%;
-  margin: 0px 16px;
+  /*  margin: 0px 16px; */
   text-align: left;
 }
 
@@ -44,7 +45,7 @@
   line-height: 32.342px; /* 200% */
   letter-spacing: -0.162px;
   width: 100%;
-  margin: 0px 16px;
+  /*  margin: 0px 16px; */
   text-align: left;
 }
 
@@ -63,19 +64,19 @@
 
 .field-input,
 .field-select {
-  margin: 0px 16px;
+  /*   margin: 0px 16px; */
   color: var(--text-blue);
   height: 40px;
   padding: 5px 5px 5px 15.5px;
   border: 1.348px solid var(--text-blue);
   background: var(--bg);
   font-family: var(--sans);
-  width: 100vw;
+  width: 100%;
   cursor: pointer;
 }
 
 .fieldInput {
-  margin: 0px 16px;
+  /*   margin: 0px 16px; */
   color: var(--text-blue);
   height: 40px;
   padding: 0px 15.5px;
@@ -97,13 +98,13 @@
 
 .interests-grid {
   display: inline-grid;
-  width: 100vw;
+  width: 100%;
   row-gap: 17px;
   column-gap: 19px;
   align-self: stretch;
   grid-template-rows: repeat(4, fit-content(100%));
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  margin: 16px;
+  margin: 16px 0px 48px;
 }
 
 footer {
