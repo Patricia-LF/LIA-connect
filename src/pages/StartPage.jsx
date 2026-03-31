@@ -2,11 +2,29 @@ import { useState } from "react";
 import styles from "./StartPage.module.css";
 import Button from "../components/Button";
 import { useNavigate } from "react-router-dom";
+import Step from "../components/Step";
 
 export default function StartPage({ profileData, setProfileData }) {
   const [role, setRole] = useState(null);
-
   const navigate = useNavigate();
+
+  const steps = [
+    {
+      number: 1,
+      title: "Välj dina områden",
+      text: "Markera det du jobbar med eller är intresserad av",
+    },
+    {
+      number: 2,
+      title: "Få din profil",
+      text: "Du får färger som representerar dina val",
+    },
+    {
+      number: 3,
+      title: "Matcha och prata",
+      text: "Markera det du jobbar med eller är intresserad av",
+    },
+  ];
 
   return (
     <div className={styles.container}>
@@ -29,35 +47,14 @@ export default function StartPage({ profileData, setProfileData }) {
       </section>
 
       <section className={styles.steps}>
-        <div className={styles["steps-container"]}>
-          <div className={styles["steps-number"]}>
-            <p>1</p>
-          </div>
-          <div className={styles["steps-text"]}>
-            <h4>Välj dina områden</h4>
-            <p>Markera det du jobbar med eller är intresserad av</p>
-          </div>
-        </div>
-
-        <div className={styles["steps-container"]}>
-          <div className={styles["steps-number"]}>
-            <p>2</p>
-          </div>
-          <div className={styles["steps-text"]}>
-            <h4>Få din profil</h4>
-            <p>Du får färger som representerar dina val</p>
-          </div>
-        </div>
-
-        <div className={styles["steps-container"]}>
-          <div className={styles["steps-number"]}>
-            <p>3</p>
-          </div>
-          <div className={styles["steps-text"]}>
-            <h4>Matcha och prata</h4>
-            <p>Markera det du jobbar med eller är intresserad av</p>
-          </div>
-        </div>
+        {steps.map((step) => (
+          <Step
+            key={step.number}
+            number={step.number}
+            title={step.title}
+            text={step.text}
+          />
+        ))}
       </section>
 
       <div className={styles.roleButtons}>
