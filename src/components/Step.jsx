@@ -4,7 +4,9 @@ export default function Step({ number, title, text }) {
   return (
     <div className={styles["steps-container"]}>
       <div className={styles["steps-number"]}>
-        <p>{number}</p>
+        <div className={styles["circle"]}>
+          <span>{number}</span>
+        </div>
       </div>
 
       <div className={styles["steps-text"]}>

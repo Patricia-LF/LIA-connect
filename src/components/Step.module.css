@@ -10,16 +10,29 @@
   width: 4.125rem;
 }
 
-.steps-number p {
+.circle {
+  position: relative;
   width: 2rem;
   height: 2rem;
-  font-family: "LED Counter 7", monospace;
   background-color: var(--accent-red);
-  color: var(--text-white);
-  display: flex;
-  align-items: center;
-  justify-content: center;
   border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.circle span {
+  font-family: "LED Counter 7", monospace;
+  color: white;
+  font-size: 1rem;
+  line-height: 1;
+  margin: 0;
+  padding: 0;
+
+  /* Needed because font has weird extra space on right/bottom */
+  position: relative;
+  left: 2px;
+  top: 2px;
 }
 
 .steps-text {
