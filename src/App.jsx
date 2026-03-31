@@ -4,6 +4,7 @@ import StartPage from "./pages/StartPage";
 import Header from "./components/Header";
 import ProfileForm from "./pages/ProfileForm";
 import ResultPage from "./pages/ResultPage";
+import ScrollToTop from "./components/ScrollToTop";
 
 export default function App() {
   const [profileData, setProfileData] = useState({
@@ -16,6 +17,7 @@ export default function App() {
 
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Header />
       <Routes>
         <Route
