@@ -40,7 +40,7 @@ export default function ResultPage({ profileData }) {
 
       <div className={styles.animation}>
         <div className={styles.circle}>
-          <CircleOrganism interests={selectedInterests} />
+          <CircleOrganism colors={selectedInterests.map((i) => i.color)} />
         </div>
 
         <div className={styles.cards}>

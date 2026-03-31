@@ -2,8 +2,20 @@ import { useEffect, useRef } from "react";
 import styles from "./CircleOrganism.module.css";
 
 // --- Tweak these constants to adjust the animation ---
+const COLS = 4; // number of columns in the grid
+const ROWS = 4; // number of rows in the grid
+const SPACING_X = 28.8; // horizontal spacing between circles (px) // 72 * 0.55 ≈ 40
 
-const COLORS = [
+const GAP_MIN = 8.8; // minimum vertical gap between rows (px) — when circles are smallest // 22 * 0.55 ≈ 12
+const GAP_MAX = 38; // maximum vertical gap between rows (px) — when circles are largest // 95 * 0.55 ≈ 52
+
+const SCALE_MIN = 0.3; // smallest scale a circle reaches during its pulse
+const SCALE_MAX = 1.5; // largest scale a circle reaches during its pulse
+
+const PERIOD = 3; // duration of one full pulse cycle in seconds
+const ROW_OFFSET = 0.5; // time offset in seconds between each row — creates the wave effect
+
+const FALLBACK_COLORS = [
   "#ED8524",
   "#1F5533",
   "#2C8ABE",
@@ -14,26 +26,13 @@ const COLORS = [
   "#016098",
 ];
 
-const COLS = 4; // number of columns in the grid
-const ROWS = 4; // number of rows in the grid
-const SPACING_X = 40; // horizontal spacing between circles (px) // 72 * 0.55 ≈ 40
-
-const GAP_MIN = 12; // minimum vertical gap between rows (px) — when circles are smallest // 22 * 0.55 ≈ 12
-const GAP_MAX = 52; // maximum vertical gap between rows (px) — when circles are largest // 95 * 0.55 ≈ 52
-
-const SCALE_MIN = 0.4; // smallest scale a circle reaches during its pulse
-const SCALE_MAX = 2; // largest scale a circle reaches during its pulse
-
-const PERIOD = 3; // duration of one full pulse cycle in seconds
-const ROW_OFFSET = 0.5; // time offset in seconds between each row — creates the wave effect
-
 // -----------------------------------------------------
 
 function random(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-function initCircleOrganism(gridEl, rafRef) {
+function initCircleOrganism(gridEl, rafRef, colors) {
   const gW = (COLS - 1) * SPACING_X;
   const rows = [];
 
@@ -43,7 +42,7 @@ function initCircleOrganism(gridEl, rafRef) {
     const rowWraps = [];
     for (let col = 0; col < COLS; col++) {
       const baseR = random(4, 8); // const baseR = random(7, 14); 7–14 * 0.55 ≈ 4–8
-      const color = COLORS[Math.floor(Math.random() * COLORS.length)];
+      const color = colors[Math.floor(Math.random() * colors.length)];
       // Center the grid horizontally by offsetting from the grid's total width
       const x = col * SPACING_X - gW / 2;
 
@@ -115,17 +114,19 @@ function initCircleOrganism(gridEl, rafRef) {
   };
 }
 
-export default function CircleOrganism() {
+export default function CircleOrganism({ colors }) {
   const gridRef = useRef(null);
   const rafRef = useRef(null);
+
+  const activeColors = colors?.length > 0 ? colors : FALLBACK_COLORS;
 
   useEffect(() => {
     const grid = gridRef.current;
     if (!grid) return;
 
-    const cleanup = initCircleOrganism(grid, rafRef);
+    const cleanup = initCircleOrganism(grid, rafRef, activeColors);
     return cleanup;
-  }, []);
+  }, [activeColors]);
 
   return (
     <div className={styles.coScene}>
