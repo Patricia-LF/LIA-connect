@@ -1,8 +1,10 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { interests } from "../data/interests";
 import { companies } from "../data/companies";
 import styles from "./ProfileForm.module.css";
 import Button from "../components/Button";
+import Spinner from "../components/Spinner";
 
 export default function ProfileForm({ profileData, setProfileData }) {
   const navigate = useNavigate();
@@ -32,18 +34,24 @@ export default function ProfileForm({ profileData, setProfileData }) {
     });
   }
 
-  function handleSubmit() {
-    if (!profileData.name.trim()) return;
-    if (isStudent && !profileData.education) return;
-    if (!isStudent && !profileData.company.trim()) return;
-    if (profileData.interests.length === 0) return;
-    navigate("/result");
-  }
+  const [isLoading, setIsLoading] = useState(false);
 
   const isValid =
     profileData.name.trim() &&
     profileData.interests.length > 0 &&
     (!isStudent || profileData.education);
+
+  function handleSubmit() {
+    if (!profileData.name.trim()) return;
+    if (isStudent && !profileData.education) return;
+    if (!isStudent && !profileData.company.trim()) return;
+    if (profileData.interests.length === 0) return;
+    setIsLoading(true);
+    setTimeout(() => navigate("/result"), 800); // liten fördröjning för känslan
+    /* navigate("/result"); */
+  }
+
+  if (isLoading) return <Spinner />;
 
   return (
     <div className={styles["profile-page"]}>

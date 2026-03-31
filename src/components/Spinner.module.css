@@ -1,0 +1,37 @@
+/* Spinner.module.css */
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.spinner {
+  position: relative;
+  width: 40px;
+  height: 40px;
+}
+
+.dot {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #e51536;
+  top: 50%;
+  left: 50%;
+  transform: rotate(calc(var(--i) * 45deg)) translateY(-16px)
+    translate(-50%, -50%);
+  animation: fade 0.8s linear infinite;
+  animation-delay: calc(var(--i) * 0.1s);
+}
+
+@keyframes fade {
+  0%,
+  100% {
+    opacity: 0.15;
+  }
+  50% {
+    opacity: 1;
+  }
+}
