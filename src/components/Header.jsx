@@ -4,7 +4,7 @@ export default function Header() {
   return (
     <header className={styles.header}>
       <div>
-        <h1 className={styles.title}>Branschevent 2026</h1>
+        <h3 className={styles.title}>Branschevent 2026</h3>
         <p className={styles.subtitle}>DD x WU</p>
       </div>
       <img
