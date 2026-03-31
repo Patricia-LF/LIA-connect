@@ -7,11 +7,11 @@ import ResultPage from "./pages/ResultPage";
 
 export default function App() {
   const [profileData, setProfileData] = useState({
-    role: "student", // tillfälligt hårdkodat, annars null,        // 'student' | 'company'
-    name: "Patricia Frykberg", // tillfälligt hårdkodat, annars "",
-    education: "webbutvecling", // tillfälligt hårdkodat, annars "", // used by students
+    role: "företag", // tillfälligt hårdkodat, annars null,        // 'student' | 'company'
+    name: "Patricia Loayza Frykberg", // tillfälligt hårdkodat, annars "",
+    education: "", // used by students
     company: "",
-    interests: ["frontend", "ux"], // tillfälligt hårdkodat, annars [], // array of interest-id:s
+    interests: [], // array of interest-id:s
   });
 
   return (
