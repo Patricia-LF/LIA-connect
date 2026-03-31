@@ -1,0 +1,52 @@
+.steps-container {
+  display: flex;
+}
+
+.steps-number {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid var(--Main-Blue, #001a52);
+  width: 4.125rem;
+}
+
+.circle {
+  position: relative;
+  width: 2rem;
+  height: 2rem;
+  background-color: var(--accent-red);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.circle span {
+  font-family: "LED Counter 7", monospace;
+  color: white;
+  font-size: 1rem;
+  line-height: 1;
+  margin: 0;
+  padding: 0;
+
+  /* Needed because font has weird extra space on right/bottom */
+  position: relative;
+  left: 2px;
+  top: 2px;
+}
+
+.steps-text {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--Main-Blue, #001a52);
+  border-left: none;
+  width: 100%;
+  padding: 1rem 0.9375rem 1rem 1rem;
+  justify-content: flex-start;
+  gap: 0.5rem;
+  text-align: left;
+}
+
+.steps-text h4 {
+  font-weight: 500;
+}
