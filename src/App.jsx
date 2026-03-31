@@ -8,7 +8,7 @@ import ScrollToTop from "./components/ScrollToTop";
 
 export default function App() {
   const [profileData, setProfileData] = useState({
-    role: "företag", // tillfälligt hårdkodat, annars null,        // 'student' | 'company'
+    role: "student" | "company",
     name: "Patricia Loayza Frykberg", // tillfälligt hårdkodat, annars "",
     education: "", // used by students
     company: "",

@@ -1,9 +1,12 @@
 import { useState } from "react";
 import styles from "./StartPage.module.css";
 import Button from "../components/Button";
+import { useNavigate } from "react-router-dom";
 
-export default function StartPage() {
+export default function StartPage({ profileData, setProfileData }) {
   const [role, setRole] = useState(null);
+
+  const navigate = useNavigate();
 
   return (
     <div className={styles.container}>
@@ -58,11 +61,24 @@ export default function StartPage() {
       </section>
 
       <div className={styles.roleButtons}>
-        <Button onClick={() => setRole("company")}>Företag</Button>
-        <Button onClick={() => setRole("student")}>Student</Button>
-      </div>
+        <Button
+          onClick={() => {
+            setProfileData((prev) => ({ ...prev, role: "company" }));
+            navigate("/profile");
+          }}
+        >
+          Företag
+        </Button>
 
-      {role && <p className={styles.selection}>You selected: {role}</p>}
+        <Button
+          onClick={() => {
+            setProfileData((prev) => ({ ...prev, role: "student" }));
+            navigate("/profile");
+          }}
+        >
+          Student
+        </Button>
+      </div>
     </div>
   );
 }
