@@ -17,7 +17,7 @@
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: #e51536;
+  background: var(--dot-color, #e51536);
   top: 50%;
   left: 50%;
   transform: rotate(calc(var(--i) * 45deg)) translateY(-16px)
