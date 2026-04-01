@@ -30,7 +30,7 @@
         width: 6px;
         height: 6px;
         border-radius: 50%;
-        background: #e51536;
+        background: var(--dot-color, #e51536);
         top: 50%;
         left: 50%;
         animation: fade 0.8s linear infinite;
@@ -84,14 +84,14 @@
   <body>
     <div id="initial-loader">
       <div class="spinner">
-        <div class="spinner-dot"></div>
-        <div class="spinner-dot"></div>
-        <div class="spinner-dot"></div>
-        <div class="spinner-dot"></div>
-        <div class="spinner-dot"></div>
-        <div class="spinner-dot"></div>
-        <div class="spinner-dot"></div>
-        <div class="spinner-dot"></div>
+        <div class="spinner-dot" style="--dot-color: #ed8524"></div>
+        <div class="spinner-dot" style="--dot-color: #e6513d"></div>
+        <div class="spinner-dot" style="--dot-color: #bc3989"></div>
+        <div class="spinner-dot" style="--dot-color: #672d6a"></div>
+        <div class="spinner-dot" style="--dot-color: #016098"></div>
+        <div class="spinner-dot" style="--dot-color: #2c8abe"></div>
+        <div class="spinner-dot" style="--dot-color: #019645"></div>
+        <div class="spinner-dot" style="--dot-color: #1f5533"></div>
       </div>
     </div>
     <div id="root"></div>
