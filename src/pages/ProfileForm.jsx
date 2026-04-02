@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { interests } from "../data/interests";
 import { companies } from "../data/companies";
 import styles from "./ProfileForm.module.css";
-import Header from "../components/Header";
 import Button from "../components/Button";
 import Spinner from "../components/Spinner";
 
@@ -56,11 +55,6 @@ export default function ProfileForm({ profileData, setProfileData }) {
 
   return (
     <div className={styles["profile-page"]}>
-      <Header>
-        <a href="/">
-          <img src="src/assets/arrow-back.png"></img> Tillbaka
-        </a>
-      </Header>
       <div className={styles["profile-container"]}>
         <p className={styles["profile-role-label"]}>
           {isStudent ? "Student" : "Företag"}

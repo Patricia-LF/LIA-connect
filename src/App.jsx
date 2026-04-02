@@ -18,7 +18,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <ScrollToTop />
-      {/* <Header /> */}
+      <Header />
       <Routes>
         <Route
           path="/"
