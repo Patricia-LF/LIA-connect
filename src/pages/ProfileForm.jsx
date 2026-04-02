@@ -163,7 +163,7 @@ export default function ProfileForm({ profileData, setProfileData }) {
         </div>
 
         {isStudent && (
-          <div className={styles["field-group"]}>
+          <div className={styles["field-group-portfolio"]}>
             <label className={styles["field-label"]} htmlFor="portfolio">
               Skapa QR-kod till Portfolio
             </label>

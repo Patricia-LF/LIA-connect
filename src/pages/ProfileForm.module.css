@@ -52,7 +52,8 @@
   gap: 16px;
 }
 
-.field-group {
+.field-group,
+.field-group-portfolio {
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -82,6 +83,10 @@
   width: 100%;
 }
 
+.field-group-portfolio {
+  margin-bottom: 48px;
+}
+
 /* .interests-section {
 } */
 
@@ -102,10 +107,6 @@
   grid-template-columns: repeat(2, minmax(0, 1fr));
   margin: 16px 0px 48px;
 }
-
-/* #portfolio {
-  margin-bottom: 48px;
-} */
 
 footer {
   background: var(--bg);
