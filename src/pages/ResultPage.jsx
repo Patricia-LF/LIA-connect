@@ -2,6 +2,7 @@ import { interests } from "../data/interests";
 import styles from "./ResultPage.module.css";
 import CircleOrganism from "../components/CircleOrganism";
 import FeaturedCards from "../components/FeaturedCards";
+import Header from "../components/Header";
 
 const educationLabel = {
   webbutveckling: "Webbutveckling",
@@ -17,6 +18,11 @@ export default function ResultPage({ profileData }) {
 
   return (
     <div className={styles.profile}>
+      <Header>
+        <a href="/profile">
+          <img src="src/assets/arrow-back.png"></img> Tillbaka
+        </a>
+      </Header>
       <p className={styles.label}>
         {isStudent
           ? educationLabel[profileData.education]

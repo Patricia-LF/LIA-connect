@@ -5,6 +5,22 @@
   padding: 0px 16px;
 }
 
+.profile-page a {
+  display: flex;
+  height: 44px;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  gap: 9px;
+  flex-shrink: 0;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: var(--text-blue);
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: 1.125rem;
+}
+
 /* .profile-container {
 } */
 
