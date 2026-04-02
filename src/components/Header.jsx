@@ -15,7 +15,7 @@ export default function Header() {
         </div>
       ) : (
         <button className={styles["back-button"]} onClick={() => navigate(-1)}>
-          ← Tillbaka
+          <img src="src/assets/arrow-back.png"></img> Tillbaka
         </button>
       )}
 
