@@ -15,8 +15,10 @@
   width: 100%;
   max-width: 360px;
   flex: 1;
-  overflow: hidden;
+  /*  overflow: hidden; */
   transition: opacity 0.3s ease;
+  max-height: 60%;
+  top: 15%;
 }
 
 .hidden {
@@ -124,6 +126,7 @@
   border-radius: 8px;
   border: 3px solid rgba(255, 255, 255, 0.28);
   animation: expandIn 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  overflow: hidden;
 }
 
 @keyframes expandIn {

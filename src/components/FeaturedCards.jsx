@@ -3,11 +3,11 @@ import styles from "./FeaturedCards.module.css";
 
 export default function FeaturedCards({ selectedInterests = [] }) {
   const n = selectedInterests.length;
-  const PEEK = 68;
+  const PEEK = 45;
   const CARD_H = 160;
   const trackH = n > 0 ? CARD_H + (n - 1) * PEEK : 0;
 
-  const [activeIndex, setActiveIndex] = useState(n - 1); // bottom card active
+  const [activeIndex, setActiveIndex] = useState(n - 1);
   const [expandedIndex, setExpandedIndex] = useState(null);
 
   const viewportRef = useRef(null);
@@ -21,12 +21,6 @@ export default function FeaturedCards({ selectedInterests = [] }) {
 
   const cardTop = (index) => index * PEEK;
 
-  const getTrackOffset = useCallback(() => {
-    const vpH = viewportRef.current?.clientHeight ?? 320;
-    const cardMid = cardTop(activeIndex) + CARD_H / 2;
-    return vpH / 2 - cardMid;
-  }, [activeIndex]);
-
   const tickScroll = useCallback(() => {
     scrollVelocity.current *= SCROLL_FRICTION;
     if (Math.abs(scrollVelocity.current) > STEP_THRESHOLD) {
@@ -34,16 +28,14 @@ export default function FeaturedCards({ selectedInterests = [] }) {
 
       setActiveIndex((prev) => {
         const next = prev + dir;
-
         if (next < 0 || next > n - 1) {
-          scrollVelocity.current = 0; // stop momentum
+          scrollVelocity.current = 0;
           if (scrollRaf.current) {
             cancelAnimationFrame(scrollRaf.current);
             scrollRaf.current = null;
           }
           return prev;
         }
-
         return next;
       });
 
@@ -69,18 +61,16 @@ export default function FeaturedCards({ selectedInterests = [] }) {
     e.preventDefault();
 
     if ((isAtTop && scrollingUp) || (isAtBottom && scrollingDown)) {
-      scrollVelocity.current = 0; // stop momentum
-
+      scrollVelocity.current = 0;
       if (scrollRaf.current) {
         cancelAnimationFrame(scrollRaf.current);
         scrollRaf.current = null;
       }
-      return; // stop where you are
+      return;
     }
 
     const direction = Math.sign(e.deltaY);
     const currentDirection = Math.sign(scrollVelocity.current);
-    // if user changes direction → reset
     if (direction !== currentDirection) {
       scrollVelocity.current = 0;
     }
@@ -108,7 +98,7 @@ export default function FeaturedCards({ selectedInterests = [] }) {
     if (!el) return;
 
     el.addEventListener("wheel", handleWheel, { passive: false });
-    el.addEventListener("touchstart", handleTouchStart);
+    el.addEventListener("touchstart", handleTouchStart, { passive: true });
     el.addEventListener("touchend", handleTouchEnd);
 
     return () => {
@@ -116,7 +106,7 @@ export default function FeaturedCards({ selectedInterests = [] }) {
       el.removeEventListener("touchstart", handleTouchStart);
       el.removeEventListener("touchend", handleTouchEnd);
     };
-  }, [expandedIndex, n, tickScroll]);
+  }, [expandedIndex, n, tickScroll, activeIndex]);
 
   const handleCardClick = (index) => {
     if (expandedIndex === index) {
@@ -129,7 +119,7 @@ export default function FeaturedCards({ selectedInterests = [] }) {
       return;
     }
 
-    setExpandedIndex(index); // Scroll to card
+    setExpandedIndex(index);
   };
 
   if (n === 0) {
@@ -142,9 +132,7 @@ export default function FeaturedCards({ selectedInterests = [] }) {
       {expandedIndex !== null && selectedInterests[expandedIndex] && (
         <div
           className={styles["fc-expanded"]}
-          style={{
-            background: selectedInterests[expandedIndex].color,
-          }}
+          style={{ background: selectedInterests[expandedIndex].color }}
         >
           <p className={styles.interestOverlay}>
             {selectedInterests[expandedIndex].bigLabel}
@@ -159,18 +147,15 @@ export default function FeaturedCards({ selectedInterests = [] }) {
                   className={styles["fc-close"]}
                   onClick={() => setExpandedIndex(null)}
                 >
-                  <img src="src/assets/close.png"></img>
+                  <img src="src/assets/close.png" />
                 </span>
               </div>
-
               <div className={styles.labelLine}></div>
             </div>
             <span className={styles.areas}>
               {selectedInterests[expandedIndex].areas?.join(" ")}
             </span>
           </div>
-
-          {/* <div className={styles["fc-overlay-divider"]} /> */}
           <div className={styles.questions}>
             <h3 className={styles["q-title"]}>Bra att prata om</h3>
             <ul className={styles["fc-questions"]}>
@@ -181,7 +166,6 @@ export default function FeaturedCards({ selectedInterests = [] }) {
               ))}
             </ul>
           </div>
-
           <div className={styles.attributes}>
             <p>Det här söker företagen</p>
             <ul className={styles["fc-attributes"]}>
@@ -198,19 +182,17 @@ export default function FeaturedCards({ selectedInterests = [] }) {
       {/* Card stack */}
       {expandedIndex === null && (
         <div className={styles["fc-viewport"]} ref={viewportRef}>
-          <div
-            className={styles["fc-track"]}
-            style={{
-              height: trackH,
-              transform: `translateY(${getTrackOffset()}px)`,
-              transition: "transform 0.5s cubic-bezier(0.22, 1, 0.36, 1)",
-            }}
-          >
+          <div className={styles["fc-track"]} style={{ height: trackH }}>
             {selectedInterests.map((interest, index) => {
               const isActive = index === activeIndex;
-              const isExpanded = index === expandedIndex;
               const distance = Math.abs(index - activeIndex);
               const scale = 1 - distance * 0.05;
+              const lift = isActive
+                ? index === n - 1
+                  ? -PEEK * 0.1
+                  : -PEEK * 2
+                : 0;
+
               return (
                 <div
                   key={interest.id}
@@ -219,8 +201,7 @@ export default function FeaturedCards({ selectedInterests = [] }) {
                     background: interest.color,
                     top: cardTop(index),
                     zIndex: index + 1,
-                    /* opacity: isActive ? 1 : 0.5, */
-                    transform: `scale(${scale})`,
+                    transform: `translateY(${lift}px) scale(${scale})`,
                     filter: isActive ? "none" : "brightness(0.9)",
                     boxShadow: isActive
                       ? "0 16px 40px rgba(0,0,0,0.45)"
@@ -233,7 +214,6 @@ export default function FeaturedCards({ selectedInterests = [] }) {
                     <div className={styles.labelLine}></div>
                     <span className={styles.areas}>{interest.areas}</span>
                   </div>
-
                   <span
                     className={styles["fc-hint"]}
                     style={{ opacity: isActive ? 1 : 0 }}
