@@ -3,6 +3,7 @@ import styles from "./ResultPage.module.css";
 import CircleOrganism from "../components/CircleOrganism";
 import FeaturedCards from "../components/FeaturedCards";
 import Header from "../components/Header";
+import QR from "../components/QR";
 
 const educationLabel = {
   webbutveckling: "Webbutveckling",
@@ -43,6 +44,8 @@ export default function ResultPage({ profileData }) {
       </p>
 
       <p className={styles.name}>{profileData.name}</p>
+
+      {isStudent && <QR url={profileData.portfolioUrl} />}
 
       <div className={styles.animation}>
         <div className={styles.circle}>

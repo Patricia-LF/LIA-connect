@@ -8,11 +8,12 @@ import ScrollToTop from "./components/ScrollToTop";
 
 export default function App() {
   const [profileData, setProfileData] = useState({
-    role: "student" | "company",
+    role: "",
     name: "Patricia Loayza Frykberg", // tillfälligt hårdkodat, annars "",
     education: "", // used by students
     company: "",
     interests: [], // array of interest-id:s
+    portfolioUrl: "",
   });
 
   return (

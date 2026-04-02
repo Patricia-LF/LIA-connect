@@ -168,6 +168,28 @@ export default function ProfileForm({ profileData, setProfileData }) {
           </div>
         </div>
 
+        {isStudent && (
+          <div className={styles["field-group"]}>
+            <label className={styles["field-label"]} htmlFor="portfolio">
+              Skapa QR-kod till Portfolio
+            </label>
+            <input
+              id="portfolio"
+              type="url"
+              className={styles.fieldInput}
+              placeholder="https://dinportfolio.se"
+              value={profileData.portfolioUrl}
+              onChange={(e) =>
+                setProfileData((prev) => ({
+                  ...prev,
+                  portfolioUrl: e.target.value,
+                }))
+              }
+              autoComplete="off"
+            />
+          </div>
+        )}
+
         <Button onClick={handleSubmit} disabled={!isValid} type="submit">
           Skapa din profil{" "}
         </Button>
