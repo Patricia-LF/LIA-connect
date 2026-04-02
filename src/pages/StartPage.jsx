@@ -3,7 +3,6 @@ import styles from "./StartPage.module.css";
 import Button from "../components/Button";
 import { useNavigate } from "react-router-dom";
 import Step from "../components/Step";
-import Header from "../components/Header";
 
 export default function StartPage({ profileData, setProfileData }) {
   const [role, setRole] = useState(null);
@@ -28,62 +27,54 @@ export default function StartPage({ profileData, setProfileData }) {
   ];
 
   return (
-    <div className={styles["start-page"]}>
-      <Header>
-        <div className={styles["header-div"]}>
-          <h3 className={styles["header-title"]}>Branschevent 2026</h3>
-          <p className={styles["header-subtitle"]}>DD x WU</p>
+    <div className={styles.container}>
+      <section className={styles.hero}>
+        <h1 className={styles.title}>LIA</h1>
+        <h1 className={styles.title}>Connect</h1>
+        <h3 className={styles.subtitle}>Connecting The Dotts</h3>
+        <div className={styles.details}>
+          <p className={styles.time}>13:00-17:00</p>
+          <p className={styles.location}>Lindholmspiren 7</p>
         </div>
-      </Header>
-      <div className={styles.container}>
-        <section className={styles.hero}>
-          <h1 className={styles.title}>LIA</h1>
-          <h1 className={styles.title}>Connect</h1>
-          <h3 className={styles.subtitle}>Connecting The Dotts</h3>
-          <div className={styles.details}>
-            <p className={styles.time}>13:00-17:00</p>
-            <p className={styles.location}>Lindholmspiren 7</p>
-          </div>
-        </section>
+      </section>
 
-        <section className={styles.intro}>
-          <h2 className={styles.subtitle}>Hitta rätt personer att prata med</h2>
-          <h4 className={styles.introText}>
-            Välj dina områden, få en visuell profil och matcha med andra på
-            eventet.
-          </h4>
-        </section>
+      <section className={styles.intro}>
+        <h2 className={styles.subtitle}>Hitta rätt personer att prata med</h2>
+        <h4 className={styles.introText}>
+          Välj dina områden, få en visuell profil och matcha med andra på
+          eventet.
+        </h4>
+      </section>
 
-        <section className={styles.steps}>
-          {steps.map((step) => (
-            <Step
-              key={step.number}
-              number={step.number}
-              title={step.title}
-              text={step.text}
-            />
-          ))}
-        </section>
+      <section className={styles.steps}>
+        {steps.map((step) => (
+          <Step
+            key={step.number}
+            number={step.number}
+            title={step.title}
+            text={step.text}
+          />
+        ))}
+      </section>
 
-        <div className={styles.roleButtons}>
-          <Button
-            onClick={() => {
-              setProfileData((prev) => ({ ...prev, role: "company" }));
-              navigate("/profile");
-            }}
-          >
-            Företag
-          </Button>
+      <div className={styles.roleButtons}>
+        <Button
+          onClick={() => {
+            setProfileData((prev) => ({ ...prev, role: "company" }));
+            navigate("/profile");
+          }}
+        >
+          Företag
+        </Button>
 
-          <Button
-            onClick={() => {
-              setProfileData((prev) => ({ ...prev, role: "student" }));
-              navigate("/profile");
-            }}
-          >
-            Student
-          </Button>
-        </div>
+        <Button
+          onClick={() => {
+            setProfileData((prev) => ({ ...prev, role: "student" }));
+            navigate("/profile");
+          }}
+        >
+          Student
+        </Button>
       </div>
     </div>
   );

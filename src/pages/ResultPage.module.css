@@ -9,23 +9,6 @@
 
 .profile {
   height: 100vh;
-  /* display: flex;
-  flex-direction: column; */
-}
-.profile a {
-  display: flex;
-  height: 44px;
-  justify-content: center;
-  align-items: center;
-  gap: 9px;
-  flex-shrink: 0;
-  align-self: center;
-  text-decoration: none;
-  text-transform: uppercase;
-  color: var(--text-blue);
-  font-family: var(--sans);
-  font-weight: 400;
-  font-size: 1.125rem;
 }
 
 .label {
