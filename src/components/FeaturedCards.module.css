@@ -61,7 +61,7 @@
   bottom: -73px;
   font-size: 12.5rem;
   color: rgba(255, 255, 255, 0.28);
-  font-family: var(--sans);
+  font-family: var(--inter);
   font-style: normal;
   font-weight: 900;
   line-height: normal;
@@ -80,7 +80,7 @@
 .fc-label {
   font-size: 1.25rem;
   font-weight: 500;
-  color: var(--text-white);
+  color: var(--Main-White);
   line-height: 22px;
   letter-spacing: 0.15px;
   text-shadow: 0 1px 10px rgba(0, 0, 0, 0.25);
@@ -92,7 +92,7 @@
 }
 
 .areas {
-  color: var(--text-white);
+  color: var(--Main-White);
   font-size: 0.7rem;
   font-style: normal;
   font-weight: 400;
@@ -103,7 +103,7 @@
 
 .fc-hint {
   font-size: 0.68rem;
-  color: var(--text-white);
+  color: var(--Main-White);
   text-transform: uppercase;
   letter-spacing: 0.09em;
   transition: opacity 0.3s ease;
@@ -155,7 +155,7 @@
   display: flex;
   width: 100%;
   justify-content: space-between;
-  color: var(--text-white);
+  color: var(--Main-White);
   font-size: 1.25rem;
 }
 
@@ -171,8 +171,8 @@
 }
 
 .q-title {
-  font-family: var(--sans);
-  color: #fff;
+  font-family: var(--inter);
+  color: var(--Main-White);
   font-size: 1rem;
   font-style: normal;
   font-weight: 700;
@@ -182,9 +182,9 @@
 }
 
 .fc-q {
-  font-family: var(--sans);
+  font-family: var(--inter);
   font-size: 1rem;
-  color: #fff;
+  color: var(--Main-White);
   text-align: left;
   font-style: normal;
   font-weight: 400;
@@ -194,9 +194,9 @@
 /* Attributes */
 .attributes p,
 .fc-a {
-  font-family: var(--sans);
+  font-family: var(--inter);
   font-size: 0.75rem;
-  color: #fff;
+  color: var(--Main-White);
   text-align: left;
   font-style: normal;
   font-weight: 400;

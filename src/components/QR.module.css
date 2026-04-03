@@ -21,9 +21,9 @@
 .tab {
   position: absolute;
   left: -40px;
-  background: var(--accent-blue);
-  color: var(--text-white);
-  font-family: var(--sans);
+  background: var(--Main-Blue);
+  color: var(--Main-White);
+  font-family: var(--inter);
   font-weight: 600;
   border: none;
   border-radius: 8px 0 0 8px;

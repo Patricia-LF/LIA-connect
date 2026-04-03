@@ -9,9 +9,9 @@
 }
 
 .profile-heading {
-  color: var(--text-blue);
+  color: var(--Main-Blue);
   font-size: 2rem;
-  font-family: var(--sans);
+  font-family: var(--inter);
   font-weight: 400;
   margin: 32px 0px 64px 0px;
   text-align: left;
@@ -22,26 +22,24 @@
 }
 
 .fieldLabel {
-  font-family: var(--sans);
-  color: var(--text-blue);
+  font-family: var(--inter);
+  color: var(--Main-Blue);
   font-size: 1.125rem;
   font-weight: 400;
   line-height: 24px;
   letter-spacing: 0.5px;
   width: 100%;
-  /*  margin: 0px 16px; */
   text-align: left;
 }
 
 .field-label {
-  font-family: var(--sans);
-  color: var(--text-blue);
+  font-family: var(--inter);
+  color: var(--Main-Blue);
   font-size: 1rem;
   font-weight: 400;
   line-height: 32.342px; /* 200% */
   letter-spacing: -0.162px;
   width: 100%;
-  /*  margin: 0px 16px; */
   text-align: left;
 }
 
@@ -61,25 +59,23 @@
 
 .field-input,
 .field-select {
-  /*   margin: 0px 16px; */
-  color: var(--text-blue);
+  color: var(--Main-Blue);
   height: 40px;
   padding: 5px 5px 5px 15.5px;
-  border: 1.348px solid var(--text-blue);
-  background: var(--bg);
-  font-family: var(--sans);
+  border: 1.348px solid var(--Main-Blue);
+  background: var(--Main-grey);
+  font-family: var(--inter);
   width: 100%;
   cursor: pointer;
 }
 
 .fieldInput {
-  /*   margin: 0px 16px; */
-  color: var(--text-blue);
+  color: var(--Main-Blue);
   height: 40px;
   padding: 0px 15.5px;
-  border: 1.348px solid var(--text-blue);
-  background: var(--bg);
-  font-family: var(--sans);
+  border: 1.348px solid var(--Main-Blue);
+  background: var(--Main-grey);
+  font-family: var(--inter);
   width: 100%;
 }
 
@@ -87,12 +83,9 @@
   margin-bottom: 48px;
 }
 
-/* .interests-section {
-} */
-
 .interests-hint {
-  color: var(--text-blue);
-  font-family: var(--sans);
+  color: var(--Main-Blue);
+  font-family: var(--inter);
   font-size: 1rem;
   margin-top: 40px;
 }
@@ -109,6 +102,6 @@
 }
 
 footer {
-  background: var(--bg);
+  background: var(--Main-grey);
   height: 120px;
 }

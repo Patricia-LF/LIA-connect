@@ -1,6 +1,6 @@
 .button {
   display: flex;
-  font-family: var(--sans);
+  font-family: var(--inter);
   font-size: 1rem;
   font-style: normal;
   font-weight: 500;
@@ -9,15 +9,15 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  border: 1px solid var(--text-blue);
+  border: 1px solid var(--Main-Blue);
   padding: 1rem 0;
   position: relative;
   cursor: pointer;
 }
 
 .button-primary {
-  background: var(--text-blue);
-  color: var(--bg);
+  background: var(--Main-Blue);
+  color: var(--Main-grey);
   width: 100%;
   padding: 1rem 0;
 }
@@ -36,8 +36,8 @@
 }
 
 .button-secondary {
-  background: var(--bg);
-  color: var(--text-blue);
+  background: var(--Main-grey);
+  color: var(--Main-Blue);
   justify-content: center;
   transition: transform 0.1s ease;
 }
@@ -48,7 +48,7 @@
 
 .selected {
   background-color: var(--interest-color);
-  color: var(--text-white);
+  color: var(--Main-White);
   border: none;
   box-shadow: 0 0 0 2px white inset;
 }

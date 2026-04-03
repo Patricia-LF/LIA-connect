@@ -1,28 +1,28 @@
 :root {
-  --text-blue: #001a52;
-  --text-black: #000;
-  --text-white: #ffffff;
-  --button-black: #242424;
-  --bg: #e4e9eb;
-  --accent-red: #e51236;
-  --accent-blue: #001a52;
-  --form-border: #c6c6c3;
-  --accent-border: #001a52;
-  --secondary-green: #c5ebd8;
+  --Main-red: #e51536;
+  --Main-Blue: #001a52;
+  --Main-grey: #e4e9eb;
+  --Main-White: #ffffff;
+  /*   --text-black: #000;
+  --button-black: #242424; */
+  /*   --accent-blue: #001a52; */
+  /*   --form-border: #c6c6c3; */
+  /*   --accent-border: #001a52; */
+  /*   --secondary-green: #c5ebd8;
   --secondary-yellow: #fcfa58;
-  --secondary-light-blue: #35d4d1;
+  --secondary-light-blue: #35d4d1; */
   --shadow:
     rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
 
-  --sans: system-ui, "Segoe UI", "Inter", sans-serif;
-  --heading: system-ui, "Segoe UI", "Inter", sans-serif;
-  --mono: Manrope;
+  --inter: system-ui, "Segoe UI", "Inter", sans-serif;
+  /*  --heading: system-ui, "Segoe UI", "Inter", sans-serif;
+  --mono: Manrope; */
 
   font: 18px/145% var(--sans);
   letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
+  /*   color-scheme: light dark;
+  color: var(--text);*/
+  background: var(--Main-grey);
   /* font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -42,7 +42,7 @@
   padding: 0;
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --text: #9ca3af;
     --text-h: #f3f4f6;
@@ -60,14 +60,14 @@
   #social .button-icon {
     filter: invert(1) brightness(2);
   }
-}
+} */
 
 html,
 body,
 #root {
   height: 100%;
   margin: 0;
-  font-family: var(--sans);
+  font-family: var(--inter);
 }
 
 body {
@@ -93,7 +93,7 @@ h1,
 h2,
 h3,
 h4 {
-  color: var(--text-blue);
+  color: var(--Main-Blue);
   margin: 0;
   font-feature-settings:
     "liga" off,
@@ -107,14 +107,14 @@ h1 {
 }
 
 h2 {
-  font-family: var(--sans);
+  font-family: var(--inter);
   font-size: 2rem;
   font-weight: 400;
   line-height: 2rem;
 }
 
 h3 {
-  font-family: var(--sans);
+  font-family: var(--inter);
   font-size: 1.25rem;
   font-weight: 500;
   line-height: 1.375rem;
@@ -122,7 +122,7 @@ h3 {
 }
 
 h4 {
-  font-family: var(--sans);
+  font-family: var(--inter);
   font-size: 1.125rem;
   font-weight: 400;
   line-height: 1.5rem;
@@ -130,7 +130,7 @@ h4 {
 }
 
 p {
-  font-family: var(--sans);
+  font-family: var(--inter);
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.375rem;

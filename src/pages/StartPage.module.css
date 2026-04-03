@@ -37,7 +37,7 @@
 
 .time,
 .location {
-  color: var(--accent-red);
+  color: var(--Main-red);
 }
 
 .steps {
