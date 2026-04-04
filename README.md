@@ -1,16 +1,53 @@
-# React + Vite
+# LIA Connect
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A mobile-first React application built for the Yrgo LIA event, where students and companies can connect based on shared interests.
 
-Currently, two official plugins are available:
+## About
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+LIA Connect lets students and company representatives select their areas of interest — such as Frontend, UX, Branding or Motion Design — and get a visual color profile based on their choices. The profile can then be used as a conversation starter when mingling at the event.
 
-## React Compiler
+## Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Choose role as student or company representative
+- Select areas of interest, each with a unique color
+- Get a visual profile with an animated circle organism
+- Browse interest cards with conversation starters
+- Students can add a portfolio link and generate a QR code
 
-## Expanding the ESLint configuration
+## Tech stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- React
+- React Router
+- CSS Modules
+- Vite
+
+## Getting started
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+The following packages are included in `package.json` and will be installed automatically:
+
+- `qrcode.react` — QR code generation
+- `html2canvas` — Save profile as image
+
+Start the development server:
+
+```bash
+npm run dev
+```
+
+## Deployment
+
+The app is deployed on Netlify at [url].
+
+## Developed by
+
+Andrea Kutchoukov
+Erik Karlsson
+Patricia Loayza Frykberg
+Robin Andersson
+Yrgo WU25 & DD25 — 2026
