@@ -46,8 +46,8 @@ The app is deployed on Netlify at [url].
 
 ## Developed by
 
-Andrea Kutchoukov
-Erik Karlsson
-Patricia Loayza Frykberg
-Robin Andersson
-Yrgo WU25 & DD25 — 2026
+- Andrea Kutchoukov
+- Erik Karlsson
+- Patricia Loayza Frykberg
+- Robin Andersson
+  Yrgo WU25 & DD25 — 2026
