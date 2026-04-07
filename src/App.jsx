@@ -9,7 +9,7 @@ import ScrollToTop from "./components/ScrollToTop";
 export default function App() {
   const [profileData, setProfileData] = useState({
     role: "",
-    name: "Patricia Loayza Frykberg", // tillfälligt hårdkodat, annars "",
+    name: "",
     education: "", // used by students
     company: "",
     interests: [], // array of interest-id:s
