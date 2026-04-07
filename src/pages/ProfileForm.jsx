@@ -5,10 +5,23 @@ import { companies } from "../data/companies";
 import styles from "./ProfileForm.module.css";
 import Button from "../components/Button";
 import Spinner from "../components/Spinner";
+import { useEffect } from "react";
 
 export default function ProfileForm({ profileData, setProfileData }) {
+  useEffect(() => {
+    setProfileData((prev) => ({
+      ...prev,
+      interests: [],
+    }));
+  }, []);
+
   const navigate = useNavigate();
   const isStudent = profileData.role === "student";
+  const [showSuggestions, setShowSuggestions] = useState(false);
+
+  const filtered = companies.filter((c) =>
+    c.name.toLowerCase().startsWith(profileData.company.toLowerCase()),
+  );
 
   function handleNameChange(e) {
     setProfileData((prev) => ({ ...prev, name: e.target.value }));
@@ -76,12 +89,6 @@ export default function ProfileForm({ profileData, setProfileData }) {
           </svg>
         </h1>
 
-        {/*  <p className={styles.fieldLabel}>
-          {isStudent
-            ? "Välj de områden som du är intresserad av"
-            : "Välj de områden som bäst beskriver er verksamhet"}
-        </p> */}
-
         <div className={styles["field-group"]}>
           <label
             className={styles["field-label"]}
@@ -102,21 +109,42 @@ export default function ProfileForm({ profileData, setProfileData }) {
             </select>
           ) : (
             <>
-              <input
-                id="education"
-                type="text"
-                className={styles.fieldInput}
-                placeholder="Sök företag..."
-                value={profileData.company}
-                onChange={handleCompanyChange}
-                list="company-list"
-                autoComplete="off"
-              />
-              <datalist id="company-list">
-                {companies.map((company) => (
-                  <option key={company.id} value={company.name} />
-                ))}
-              </datalist>
+              <div className={styles["company-wrapper"]}>
+                <input
+                  id="education"
+                  type="text"
+                  className={styles.fieldInput}
+                  placeholder="Sök företag..."
+                  value={profileData.company}
+                  onChange={(e) => {
+                    handleCompanyChange(e);
+                    setShowSuggestions(true);
+                  }}
+                  onFocus={() => setShowSuggestions(true)}
+                  onBlur={() =>
+                    setTimeout(() => setShowSuggestions(false), 150)
+                  }
+                  autoComplete="off"
+                />
+                {showSuggestions && filtered.length > 0 && (
+                  <ul className={styles["company-suggestions"]}>
+                    {filtered.map((company) => (
+                      <li
+                        key={company.id}
+                        onMouseDown={() => {
+                          setProfileData((prev) => ({
+                            ...prev,
+                            company: company.name,
+                          }));
+                          setShowSuggestions(false);
+                        }}
+                      >
+                        {company.name}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
             </>
           )}
         </div>
