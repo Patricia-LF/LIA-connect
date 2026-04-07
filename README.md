@@ -29,10 +29,9 @@ Install dependencies:
 npm install
 ```
 
-The following packages are included in `package.json` and will be installed automatically:
+The following package is included in `package.json` and will be installed automatically:
 
 - `qrcode.react` — QR code generation
-- `html2canvas` — Save profile as image
 
 Start the development server:
 
@@ -51,3 +50,11 @@ Erik Karlsson
 Patricia Loayza Frykberg  
 Robin Andersson  
 Yrgo WU25 & DD25 — 2026
+
+## Possible improvements
+
+- The `html2canvas` package could be used to allow users to save their profile as an image.
+
+- A database was not necessary for this specific event, but adding one could be useful for creating user profiles and saving results.
+
+- We created an array containing information about the companies attending the event, but we did not have time to validate the data.
