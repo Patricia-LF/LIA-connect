@@ -14,6 +14,7 @@ export default function QR({ url }) {
         Portfolio <img src="src/assets/arrow-left 1.png"></img>
       </button>
       <div className={styles.content}>
+        <p className={styles["qr-title"]}>Portfolio</p>
         <QRCodeCanvas value={url} size={180} />
         <p className={styles.url}>{url}</p>
       </div>
