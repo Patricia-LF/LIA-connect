@@ -12,6 +12,11 @@ export const interests = [
       "Vilka verktyg jobbar ni med?",
       "Hur samarbetar 3D med design och utveckling hos er?",
     ],
+    questionsCompany: [
+      "Vilka 3D-verktyg kan studenten?",
+      "Har studenten jobbat med rendering, animation eller realtid?",
+      "Vad tycker studenten är mest spännande inom 3D?",
+    ],
     attributes: [
       "Rumsuppfattning och formkänsla",
       "Förståelse för material, ljus och rörelse",
@@ -36,6 +41,11 @@ export const interests = [
       "Hur översätter ni ett varumärke till design i praktiken?",
       "Får man jobba både strategiskt och visuellt?",
       "Hur ser processen ut från idé till färdig identitet?",
+    ],
+    questionsCompany: [
+      "Hur tar studenten sig an brandingprojekt?",
+      "Har studenten jobbat med identitet, koncept eller tonalitet?",
+      "Hur tänker studenten kring målgrupp och uttryck?",
     ],
     attributes: [
       "Stark visuell känsla",
@@ -62,6 +72,11 @@ export const interests = [
       "Vilka verktyg använder ni för motion design?",
       "Finns det möjlighet att jobba med både grafik och interaktion?",
     ],
+    questionsCompany: [
+      "Hur har studenten använt motion i projekt?",
+      "Har studenten jobbat med UI-animation, content eller branding?",
+      "Hur tänker studenten kring timing och rörelse?",
+    ],
     attributes: [
       "Känsla för timing och rörelse",
       "Förståelse för hur animation stödjer användning",
@@ -81,6 +96,11 @@ export const interests = [
       "Förväntas man kunna hela flödet från UI till databas?",
       "Hur ser arbetsdagen ut för någon som jobbar fullstack?",
       "Finns det möjlighet att fördjupa sig i ena delen över tid?",
+    ],
+    questionsCompany: [
+      "Har studenten byggt hela flöden från UI till databas?",
+      "Vilken del, Frontend/Backend, känns starkast idag?",
+      "Hur bekväm är studenten med att växla mellan flera delar?",
     ],
     attributes: [
       "Bred teknisk förståelse",
@@ -102,6 +122,11 @@ export const interests = [
       "Hur jobbar ni med databaser och API:er?",
       "Hur mycket samarbete finns det mellan backend och frontend?",
     ],
+    questionsCompany: [
+      "Vilka språk och verktyg har studenten jobbat med?",
+      "Har studenten byggt API:er eller arbetat med databaser?",
+      "Vad vill studenten lära sig mer om inom backend?",
+    ],
     attributes: [
       "Logiskt tänkande och problemlösning",
       "Förståelse för data och struktur",
@@ -122,6 +147,11 @@ export const interests = [
       "Hur ser en vanlig uppgift ut för en junior frontend-utvecklare?",
       "Hur mycket fokus ligger på prestanda och tillgänglighet?",
     ],
+    questionsCompany: [
+      "Vilka tekniker kan studenten?",
+      "Hur studenten jobbar från design till kod?",
+      "Gillar studenten UI-nära eller mer logiknära arbete?",
+    ],
     attributes: [
       "Grund i HTML, CSS och JavaScript",
       "Förståelse för komponentbaserat tänk",
@@ -141,6 +171,11 @@ export const interests = [
       "Har ni designsystem eller bygger ni nytt från grunden?",
       "Hur mycket frihet finns det i det visuella uttrycket?",
       "Hur nära jobbar UI-designers utvecklarna?",
+    ],
+    questionsCompany: [
+      "Hur tänker studenten kring färg, form och tydlighet?",
+      "Hur studenten byggt komponenter eller designsystem?",
+      "Vad gillar studenten mest: detaljer, helhet eller system?",
     ],
     attributes: [
       "God känsla för form och detaljer",
@@ -166,6 +201,11 @@ export const interests = [
       "Är ni med och gör research eller kommer ni in senare i processen?",
       "Hur testar ni om en lösning faktiskt fungerar?",
       "Hur samarbetar UX med UI och utveckling hos er?",
+    ],
+    questionsCompany: [
+      "Hur jobbar studenten med användarbehov och flöden?",
+      "Hur studenten gjort research, tester eller prototyper?",
+      "Vad tycker studenten är mest intressant inom UX?",
     ],
     attributes: [
       "Nyfikenhet på användarbehov",

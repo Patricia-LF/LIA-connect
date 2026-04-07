@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect, useCallback } from "react";
 import styles from "./FeaturedCards.module.css";
 
-export default function FeaturedCards({ selectedInterests = [] }) {
+export default function FeaturedCards({ selectedInterests = [], isStudent }) {
   const n = selectedInterests.length;
   const PEEK = 45;
   const CARD_H = 160;
@@ -126,6 +126,11 @@ export default function FeaturedCards({ selectedInterests = [] }) {
     return <div className={styles["fc-empty"]}>Inga intressen valda än.</div>;
   }
 
+  const currentInterest = selectedInterests[expandedIndex];
+
+  const questions =
+    currentInterest?.[isStudent ? "questions" : "questionsCompany"] ?? [];
+
   return (
     <div className={styles["fc-root"]}>
       {/* Expanded card */}
@@ -157,9 +162,11 @@ export default function FeaturedCards({ selectedInterests = [] }) {
             </span>
           </div>
           <div className={styles.questions}>
-            <h3 className={styles["q-title"]}>Bra att prata om</h3>
+            <h3 className={styles["q-title"]}>
+              {isStudent ? "Bra att prata om" : "Frågor att ställa studenter"}
+            </h3>
             <ul className={styles["fc-questions"]}>
-              {selectedInterests[expandedIndex].questions?.map((q, i) => (
+              {questions.map((q, i) => (
                 <li key={i} className={styles["fc-q"]}>
                   {q}
                 </li>
@@ -167,7 +174,12 @@ export default function FeaturedCards({ selectedInterests = [] }) {
             </ul>
           </div>
           <div className={styles.attributes}>
-            <p>Det här söker företagen</p>
+            <p>
+              {" "}
+              {isStudent
+                ? "Det här söker företagen"
+                : "Det här kan studenter bidra med"}
+            </p>
             <ul className={styles["fc-attributes"]}>
               {selectedInterests[expandedIndex].attributes?.map((a, i) => (
                 <li key={i} className={styles["fc-a"]}>

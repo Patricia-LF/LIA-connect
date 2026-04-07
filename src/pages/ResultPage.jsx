@@ -46,7 +46,10 @@ export default function ResultPage({ profileData }) {
         </div>
 
         <div className={styles.cards}>
-          <FeaturedCards selectedInterests={selectedInterests} />
+          <FeaturedCards
+            selectedInterests={selectedInterests}
+            isStudent={isStudent}
+          />
         </div>
       </div>
     </div>
