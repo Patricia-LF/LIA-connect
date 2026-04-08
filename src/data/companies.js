@@ -8,41 +8,25 @@ export const companies = [
   {
     id: 1,
     name: "A2B Solutions",
-    size: "~5 anställda",
+    size: null,
     focus: ["Supply Chain", "Lagersystem", "IT-konsult"],
+    techStack: null,
     description:
       "Specialister på att implementera lagersystem och automation som optimerar processer i lager, butiker och fabriker.",
-    contact: null,
-    techStack: [],
-    conversationStarters: [
-      "Vad är den roligaste tekniska utmaningen ni löst nyligen?",
-      "Hur ser er stack ut för att integrera mot externa system?",
-      "Tar ni emot LIA-studenter inom frontend eller är det mer backend/system?",
-    ],
-    conversationStartersDesign: [
-      "Hur ser gränssnittet ut för era lagersystem – finns det utrymme för bättre UX?",
-      "Jobbar ni med någon designer idag, eller är det mest tekniker?",
-      "Vad skulle en digital designer kunna bidra med hos er?",
-    ],
+    url: "https://a2bsolutions.se",
+    contact: ["E-mail: info@a2bsolutions.se", "Tel: +46767648107"],
   },
   {
     id: 2,
     name: "Aino",
-    size: "~12 anställda",
+    size: "~11 anställda",
     focus: ["E-handel", "Headless CMS", "Design", "Frontend"],
+    techStack: null,
     description:
       "Litet, tight team i Göteborg med fokus på e-handel och headless-lösningar. Har både digitala designers och frontend-utvecklare som jobbar nära varandra.",
-    contact: null,
-    techStack: [],
-    conversationStarters: [
-      "Ni jobbar headless – vilket CMS brukar ni använda och varför?",
-      "Hur ser samarbetet ut mellan designers och frontend-devs i ett så litet team?",
-      "Vad är de vanligaste tekniska utmaningarna i era e-handelsprojekt?",
-    ],
-    conversationStartersDesign: [
-      "Hur ser designprocessen ut hos er när ni jobbar headless – designar ni i Figma och handlar off direkt till frontend?",
-      "Ni är ett litet team med både designers och devs – hur nära jobbar ni tillsammans dagligen?",
-      "Vad är de roligaste designutmaningarna i e-handelsprojekt hos er?",
+    contact: [
+      "E-mail: linnea@aino.agency",
+      "Tel: +46 704 97 25 97 (Linnéa Furhammar - Career & finance)",
     ],
   },
   {
@@ -50,19 +34,12 @@ export const companies = [
     name: "Antura",
     size: "100–200 anställda",
     focus: ["SaaS", "Projektledning", "PPM", "Offentlig sektor"],
+    techStack: [],
     description:
       "Sedan 2001 levererar Antura ett ledande PPM-verktyg (projekt- och portföljhantering) med 200 000+ användare i 50+ länder.",
-    contact: null,
-    techStack: [],
-    conversationStarters: [
-      "Hur jobbar ni med agila vs traditionella projektmodeller i er produkt?",
-      "Vilka är de största UX-utmaningarna med ett komplext PPM-system?",
-      "Hur hanterar ni stora datamängder och rapportering i realtid?",
-    ],
-    conversationStartersDesign: [
-      "Hur designar man ett PPM-system som är kraftfullt men ändå inte överväldigande?",
-      "Ni har 200 000+ användare – hur arbetar ni med UX-research och användartester?",
-      "Hur ser ert designsystem ut – jobbar ni med ett komponentbibliotek i Figma?",
+    contact: [
+      "E-mail: linnea@aino.agency",
+      "Tel: +46 704 97 25 97 (Linnéa Furhammar - Career & finance)",
     ],
   },
   {
