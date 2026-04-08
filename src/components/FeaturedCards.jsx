@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect, useCallback } from "react";
 import styles from "./FeaturedCards.module.css";
+import close from "../assets/close.png";
 
 export default function FeaturedCards({ selectedInterests = [], isStudent }) {
   const n = selectedInterests.length;
@@ -152,7 +153,7 @@ export default function FeaturedCards({ selectedInterests = [], isStudent }) {
                   className={styles["fc-close"]}
                   onClick={() => setExpandedIndex(null)}
                 >
-                  <img src="src/assets/close.png" />
+                  <img src={close} />
                 </span>
               </div>
               <div className={styles.labelLine}></div>
