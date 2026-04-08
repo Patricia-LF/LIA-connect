@@ -120,12 +120,16 @@ export default function ProfileForm({ profileData, setProfileData }) {
                     handleCompanyChange(e);
                     setShowSuggestions(true);
                   }}
-                  onFocus={() => setShowSuggestions(true)}
+                  onFocus={(e) => {
+                    e.target.select();
+                    setShowSuggestions(true);
+                  }}
                   onBlur={() =>
                     setTimeout(() => setShowSuggestions(false), 150)
                   }
                   autoComplete="off"
                 />
+                <span className={styles["company-arrow"]}>▾</span>
                 {showSuggestions && filtered.length > 0 && (
                   <ul className={styles["company-suggestions"]}>
                     {filtered.map((company) => (
