@@ -1,5 +1,7 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import styles from "./Header.module.css";
+import logo from "../assets/logo/bomarke.svg";
+import arrowBack from "../assets/arrow-back.png";
 
 export default function Header() {
   const { pathname } = useLocation();
@@ -15,15 +17,11 @@ export default function Header() {
         </div>
       ) : (
         <button className={styles["back-button"]} onClick={() => navigate(-1)}>
-          <img src="src/assets/arrow-back.png"></img> Tillbaka
+          <img src={arrowBack} alt="Tillbaka" /> Tillbaka
         </button>
       )}
 
-      <img
-        className={styles.logo}
-        src="src/assets/logo/bomarke.svg"
-        alt="Logo"
-      />
+      <img className={styles.logo} src={logo} alt="Logo" />
     </header>
   );
 }
