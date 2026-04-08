@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { QRCodeCanvas } from "qrcode.react";
 import styles from "./QR.module.css";
+import arrowLeft from "../assets/arrow-left 1.png";
 
 export default function QR({ url }) {
   const [open, setOpen] = useState(false);
@@ -27,7 +28,7 @@ export default function QR({ url }) {
 
       <div className={`${styles.drawer} ${open ? styles.open : ""}`}>
         <button className={styles.tab} onClick={() => setOpen((prev) => !prev)}>
-          Portfolio <img src="src/assets/arrow-left 1.png" />
+          Portfolio <img src={arrowLeft} />
         </button>
         <div className={styles.content}>
           <p className={styles["qr-title"]}>Portfolio</p>
