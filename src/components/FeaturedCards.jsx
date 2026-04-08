@@ -95,12 +95,12 @@ export default function FeaturedCards({ selectedInterests = [], isStudent }) {
     else if (dy < -40) setActiveIndex((prev) => Math.max(prev - 1, 0));
   };
 
-  const handleTouchEnd = (e) => {
+  /*  const handleTouchEnd = (e) => {
     if (expandedIndex !== null) return;
     const dy = touchStartY.current - e.changedTouches[0].clientY;
     if (dy > 40) setActiveIndex((prev) => Math.min(prev + 1, n - 1));
     else if (dy < -40) setActiveIndex((prev) => Math.max(prev - 1, 0));
-  };
+  }; */
 
   useEffect(() => {
     const el = viewportRef.current;
@@ -108,13 +108,13 @@ export default function FeaturedCards({ selectedInterests = [], isStudent }) {
 
     el.addEventListener("wheel", handleWheel, { passive: false });
     el.addEventListener("touchstart", handleTouchStart, { passive: true });
-    el.addEventListener("touchend", handleTouchEnd);
+    /*   el.addEventListener("touchend", handleTouchEnd); */
     el.addEventListener("touchmove", handleTouchMove, { passive: false });
 
     return () => {
       el.removeEventListener("wheel", handleWheel);
       el.removeEventListener("touchstart", handleTouchStart);
-      el.removeEventListener("touchend", handleTouchEnd);
+      /*       el.removeEventListener("touchend", handleTouchEnd); */
       el.removeEventListener("touchmove", handleTouchMove);
     };
   }, [expandedIndex, n, tickScroll, activeIndex]);
