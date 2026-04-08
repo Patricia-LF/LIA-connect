@@ -11,14 +11,13 @@
 
 /* Viewport & track */
 .fc-viewport {
-  position: relative;
+  /* position: relative; */
   width: 100%;
   max-width: 360px;
   flex: 1;
-  /*  overflow: hidden; */
+  /* overflow: hidden; */
   transition: opacity 0.3s ease;
   max-height: 60%;
-  top: 20%;
 }
 
 .hidden {
