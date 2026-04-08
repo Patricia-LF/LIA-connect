@@ -29,8 +29,10 @@ export default function StartPage({ profileData, setProfileData }) {
   return (
     <div className={styles.container}>
       <section className={styles.hero}>
-        <h1 className={styles.title}>LIA</h1>
-        <h1 className={styles.title}>Connect</h1>
+        <video width="100%" autoPlay loop muted playsInline>
+          <source src="src/assets/hero/Lia connect.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
         <h3 className={styles.subtitle}>Connecting The Dotts</h3>
         <div className={styles.details}>
           <p className={styles.time}>13:00-17:00</p>
