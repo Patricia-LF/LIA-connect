@@ -114,7 +114,7 @@ export default function ProfileForm({ profileData, setProfileData }) {
                   id="education"
                   type="text"
                   className={styles.fieldInput}
-                  placeholder="Sök företag..."
+                  placeholder="Ange företag..."
                   value={profileData.company}
                   onChange={(e) => {
                     handleCompanyChange(e);
