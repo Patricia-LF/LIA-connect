@@ -1,23 +1,40 @@
-// QRDrawer.jsx
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { QRCodeCanvas } from "qrcode.react";
 import styles from "./QR.module.css";
 
 export default function QR({ url }) {
   const [open, setOpen] = useState(false);
 
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
+
   if (!url) return null;
 
   return (
-    <div className={`${styles.drawer} ${open ? styles.open : ""}`}>
-      <button className={styles.tab} onClick={() => setOpen((prev) => !prev)}>
-        Portfolio <img src="src/assets/arrow-left 1.png"></img>
-      </button>
-      <div className={styles.content}>
-        <p className={styles["qr-title"]}>Portfolio</p>
-        <QRCodeCanvas value={url} size={180} />
-        <p className={styles.url}>{url}</p>
+    <>
+      {/* Overlay som stänger drawern vid klick utanför */}
+      {open && (
+        <div className={styles.overlay} onClick={() => setOpen(false)} />
+      )}
+
+      <div className={`${styles.drawer} ${open ? styles.open : ""}`}>
+        <button className={styles.tab} onClick={() => setOpen((prev) => !prev)}>
+          Portfolio <img src="src/assets/arrow-left 1.png" />
+        </button>
+        <div className={styles.content}>
+          <p className={styles["qr-title"]}>Portfolio</p>
+          <QRCodeCanvas value={url} size={180} />
+          <p className={styles.url}>{url}</p>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
