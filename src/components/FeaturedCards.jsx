@@ -163,7 +163,9 @@ export default function FeaturedCards({ selectedInterests = [], isStudent }) {
           </div>
           <div className={styles.questions}>
             <h3 className={styles["q-title"]}>
-              {isStudent ? "Bra att prata om" : "Frågor att ställa studenter"}
+              {isStudent
+                ? "Bra att prata om"
+                : "Frågor att ställa till studenter"}
             </h3>
             <ul className={styles["fc-questions"]}>
               {questions.map((q, i) => (
