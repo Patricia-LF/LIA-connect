@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./Button.module.css";
+import arrowRight from "../assets/arrow-right.svg";
 
 export default function Button({
   ariaPressed,
@@ -30,7 +31,7 @@ export default function Button({
       className={className}
     >
       {children}
-      {variant === "primary" && <img src="src/assets/arrow-right.svg"></img>}
+      {variant === "primary" && <img src={arrowRight}></img>}
     </button>
   );
 }
