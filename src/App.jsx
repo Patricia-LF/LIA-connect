@@ -47,7 +47,10 @@ export default function App() {
           path="/result"
           element={
             profileData.name ? (
-              <ResultPage profileData={profileData} />
+              <ResultPage
+                profileData={profileData}
+                setProfileData={setProfileData}
+              />
             ) : (
               <Navigate to="/" replace />
             )
