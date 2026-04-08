@@ -2,13 +2,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100%;
   position: relative;
-  overflow: hidden;
 }
 
 .profile {
-  height: 100vh;
+  height: 85vh;
 }
 
 .label {
@@ -39,13 +37,16 @@
 .animation {
   display: flex;
   flex-direction: column;
-  gap: 50px;
+  gap: 120px;
+  top: 15%;
+  position: relative;
 }
 
 .circle {
-  height: 50%;
+  /* height: 50%; */
+  position: relative;
 }
 
 .cards {
-  height: 100vh;
+  /* height: 100%; */
 }

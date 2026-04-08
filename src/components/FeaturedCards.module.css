@@ -18,7 +18,7 @@
   /*  overflow: hidden; */
   transition: opacity 0.3s ease;
   max-height: 60%;
-  top: 15%;
+  top: 20%;
 }
 
 .hidden {
