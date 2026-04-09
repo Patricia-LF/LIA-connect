@@ -3,6 +3,7 @@ import styles from "./StartPage.module.css";
 import Button from "../components/Button";
 import { useNavigate } from "react-router-dom";
 import Step from "../components/Step";
+import DotText from "../components/DotText";
 
 export default function StartPage({ profileData, setProfileData }) {
   const [role, setRole] = useState(null);
@@ -17,21 +18,24 @@ export default function StartPage({ profileData, setProfileData }) {
     {
       number: 2,
       title: "Få din profil",
-      text: "Du får färger som representerar dina val",
+      text: "Få kort med samtalsfrågor och färger som representerar dina val",
     },
     {
       number: 3,
       title: "Matcha och prata",
-      text: "Markera det du jobbar med eller är intresserad av",
+      text: "Hitta andra med liknande profil och börja mingla",
     },
   ];
 
   return (
     <div className={styles.container}>
       <section className={styles.hero}>
-        <h1 className={styles.title}>LIA</h1>
-        <h1 className={styles.title}>Connect</h1>
-        <h3 className={styles.subtitle}>Connecting The Dotts</h3>
+        <div className={styles.title}>
+          <DotText />
+        </div>
+        {/*         <h1 className={styles.title}>LIA</h1>
+        <h1 className={styles.title}>Connect</h1> */}
+        <h3 className={styles.subtitle}>Connecting The Dots</h3>
         <div className={styles.details}>
           <p className={styles.time}>13:00-17:00</p>
           <p className={styles.location}>Lindholmspiren 7</p>
