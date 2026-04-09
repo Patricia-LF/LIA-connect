@@ -22,8 +22,18 @@ export default function FeaturedCards({ selectedInterests = [], isStudent }) {
 
   const cardTop = (index) => index * PEEK;
 
+  const lastStepTime = useRef(0);
+
   const tickScroll = useCallback(() => {
     if (Math.abs(scrollVelocity.current) > STEP_THRESHOLD) {
+      const now = performance.now();
+      if (now - lastStepTime.current < 300) {
+        // För tidigt — vänta lite till
+        scrollRaf.current = requestAnimationFrame(tickScroll);
+        return;
+      }
+      lastStepTime.current = now;
+
       const dir = scrollVelocity.current > 0 ? 1 : -1;
 
       setActiveIndex((prev) => {
@@ -32,10 +42,8 @@ export default function FeaturedCards({ selectedInterests = [], isStudent }) {
         return next;
       });
 
-      // 🔥 NOLLSTÄLL istället för att minska
       scrollVelocity.current = 0;
 
-      // 🔥 Stoppa loopen direkt
       if (scrollRaf.current) {
         cancelAnimationFrame(scrollRaf.current);
         scrollRaf.current = null;
@@ -73,13 +81,9 @@ export default function FeaturedCards({ selectedInterests = [], isStudent }) {
       return;
     }
 
+    // Sätt velocity till ett fast värde istället för att addera
     const direction = Math.sign(e.deltaY);
-    const currentDirection = Math.sign(scrollVelocity.current);
-    if (direction !== currentDirection) {
-      scrollVelocity.current = 0;
-    }
-
-    scrollVelocity.current += e.deltaY * SCROLL_SENSITIVITY;
+    scrollVelocity.current = direction * STEP_THRESHOLD * 1.5;
 
     if (!scrollRaf.current) {
       scrollRaf.current = requestAnimationFrame(tickScroll);
