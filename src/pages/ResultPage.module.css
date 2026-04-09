@@ -6,7 +6,10 @@
 }
 
 .profile {
-  height: 85vh;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
 }
 
 .label {
@@ -37,8 +40,9 @@
 .animation {
   display: flex;
   flex-direction: column;
-  gap: 120px;
-  top: 15%;
+  align-self: center;
+  gap: 100px;
+  top: 10%;
   position: relative;
 }
 

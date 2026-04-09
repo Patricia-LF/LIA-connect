@@ -17,31 +17,34 @@ export default function FeaturedCards({ selectedInterests = [], isStudent }) {
   const touchStartY = useRef(0);
 
   const SCROLL_FRICTION = 0.82;
-  const SCROLL_SENSITIVITY = 0.3;
+  const SCROLL_SENSITIVITY = 0.15;
   const STEP_THRESHOLD = PEEK * 0.4;
 
   const cardTop = (index) => index * PEEK;
 
   const tickScroll = useCallback(() => {
-    scrollVelocity.current *= SCROLL_FRICTION;
     if (Math.abs(scrollVelocity.current) > STEP_THRESHOLD) {
       const dir = scrollVelocity.current > 0 ? 1 : -1;
 
       setActiveIndex((prev) => {
         const next = prev + dir;
-        if (next < 0 || next > n - 1) {
-          scrollVelocity.current = 0;
-          if (scrollRaf.current) {
-            cancelAnimationFrame(scrollRaf.current);
-            scrollRaf.current = null;
-          }
-          return prev;
-        }
+        if (next < 0 || next > n - 1) return prev;
         return next;
       });
 
-      scrollVelocity.current -= dir * STEP_THRESHOLD;
+      // 🔥 NOLLSTÄLL istället för att minska
+      scrollVelocity.current = 0;
+
+      // 🔥 Stoppa loopen direkt
+      if (scrollRaf.current) {
+        cancelAnimationFrame(scrollRaf.current);
+        scrollRaf.current = null;
+      }
+
+      return;
     }
+
+    scrollVelocity.current *= SCROLL_FRICTION;
 
     if (Math.abs(scrollVelocity.current) > 2) {
       scrollRaf.current = requestAnimationFrame(tickScroll);
