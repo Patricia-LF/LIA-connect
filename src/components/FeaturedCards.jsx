@@ -94,12 +94,25 @@ export default function FeaturedCards({ selectedInterests = [], isStudent }) {
     touchStartY.current = e.touches[0].clientY;
   };
 
+  const lastTouchStep = useRef(0);
+
   const handleTouchMove = (e) => {
     if (expandedIndex !== null) return;
-    e.preventDefault(); // ← blockerar sidscroll
+    e.preventDefault();
+
+    const now = performance.now();
+    if (now - lastTouchStep.current < 400) return; // cooldown
+
     const dy = touchStartY.current - e.touches[0].clientY;
-    if (dy > 40) setActiveIndex((prev) => Math.min(prev + 1, n - 1));
-    else if (dy < -40) setActiveIndex((prev) => Math.max(prev - 1, 0));
+    if (dy > 40) {
+      setActiveIndex((prev) => Math.min(prev + 1, n - 1));
+      lastTouchStep.current = now;
+      touchStartY.current = e.touches[0].clientY; // återställ startpunkt
+    } else if (dy < -40) {
+      setActiveIndex((prev) => Math.max(prev - 1, 0));
+      lastTouchStep.current = now;
+      touchStartY.current = e.touches[0].clientY; // återställ startpunkt
+    }
   };
 
   /*  const handleTouchEnd = (e) => {
