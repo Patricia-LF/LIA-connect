@@ -1,0 +1,28 @@
+/* DotText.module.css */
+
+.dt-wrapper {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  position: absolute;
+  z-index: 1;
+  /* object-fit: contain; */
+  /* height: 100%; */
+  width: 100%;
+}
+
+/* .dt-wrapper p {
+  font-family: "Bitcount Single", system-ui;
+  font-size: 8rem;
+  color: white;
+  margin: 0px 10px;
+  display: flex;
+  position: relative;
+  height: 75%;
+} */
+
+.dt-wrapper canvas {
+  width: 100%;
+  height: auto;
+  display: block;
+}
