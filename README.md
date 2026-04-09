@@ -41,7 +41,7 @@ npm run dev
 
 ## Deployment
 
-The app is deployed on Netlify at [(https://lia-connect.netlify.app/)].
+The app is deployed on Netlify at https://lia-connect.netlify.app/.
 
 ## Developed by
 
