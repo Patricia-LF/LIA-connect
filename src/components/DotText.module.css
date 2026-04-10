@@ -11,16 +11,6 @@
   width: 100%;
 }
 
-/* .dt-wrapper p {
-  font-family: "Bitcount Single", system-ui;
-  font-size: 8rem;
-  color: white;
-  margin: 0px 10px;
-  display: flex;
-  position: relative;
-  height: 75%;
-} */
-
 .dt-wrapper canvas {
   width: 100%;
   height: auto;

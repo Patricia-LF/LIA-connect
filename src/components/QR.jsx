@@ -1,3 +1,7 @@
+// QR.jsx
+// Slide-in drawer showing a QR code for the student's portfolio URL.
+// Only rendered if a URL has been provided.
+
 import { useState, useEffect } from "react";
 import { QRCodeCanvas } from "qrcode.react";
 import styles from "./QR.module.css";
@@ -6,6 +10,7 @@ import arrowLeft from "../assets/arrow-left 1.png";
 export default function QR({ url }) {
   const [open, setOpen] = useState(false);
 
+  // Lock body scroll when the drawer is open
   useEffect(() => {
     if (open) {
       document.body.style.overflow = "hidden";
@@ -21,7 +26,7 @@ export default function QR({ url }) {
 
   return (
     <>
-      {/* Overlay som stänger drawern vid klick utanför */}
+      {/* Transparent overlay — closes the drawer when tapped outside */}
       {open && (
         <div className={styles.overlay} onClick={() => setOpen(false)} />
       )}

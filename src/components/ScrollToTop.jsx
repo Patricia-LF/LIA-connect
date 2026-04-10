@@ -1,4 +1,8 @@
 // ScrollToTop.jsx
+// Scrolls to the top on every route change.
+// scrollRestoration is set to "manual" to prevent the browser from
+// overriding this when navigating back.
+
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 

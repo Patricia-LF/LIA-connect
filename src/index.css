@@ -3,30 +3,14 @@
   --Main-Blue: #001a52;
   --Main-grey: #e4e9eb;
   --Main-White: #ffffff;
-  /*   --text-black: #000;
-  --button-black: #242424; */
-  /*   --accent-blue: #001a52; */
-  /*   --form-border: #c6c6c3; */
-  /*   --accent-border: #001a52; */
-  /*   --secondary-green: #c5ebd8;
-  --secondary-yellow: #fcfa58;
-  --secondary-light-blue: #35d4d1; */
   --shadow:
     rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
 
   --inter: system-ui, "Segoe UI", "Inter", sans-serif;
-  /*  --heading: system-ui, "Segoe UI", "Inter", sans-serif;
-  --mono: Manrope; */
 
   font: 18px/145% var(--sans);
   letter-spacing: 0.18px;
-  /*   color-scheme: light dark;
-  color: var(--text);*/
   background: var(--Main-grey);
-  /* font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale; */
 }
 
 @font-face {
@@ -42,26 +26,6 @@
   padding: 0;
 }
 
-/* @media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
-
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
-} */
-
 html,
 body,
 #root {
@@ -70,23 +34,13 @@ body,
   font-family: var(--inter);
 }
 
+/* min-height allows pages to grow beyond 100vh if content overflows */
 body {
   min-height: 100dvh;
 }
 
-/* body {
-  margin: 0;
-} */
-
 #root {
-  /*  width: 100vw;
-  margin: 0 auto; */
   text-align: center;
-  /* border-inline: 1px solid var(--border);
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box; */
 }
 
 h1,
@@ -139,20 +93,3 @@ p {
     "liga" off,
     "clig" off;
 }
-
-/*
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
-}
-
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
-}
- */

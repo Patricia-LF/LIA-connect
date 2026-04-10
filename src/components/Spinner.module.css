@@ -12,6 +12,8 @@
   height: 40px;
 }
 
+/* Each dot is rotated by (i × 45°) and pushed outward by 16px.
+   translate(-50%, -50%) centers the dot on its rotation point. */
 .dot {
   position: absolute;
   width: 6px;

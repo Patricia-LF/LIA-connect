@@ -28,10 +28,7 @@ ease-in-out makes the rotation accelerate and decelerate smoothly.*/
   }
 }
 
-/* Each circle wrapper is positioned at the grid's origin (0, 0).
-   The JS animation loop sets its transform to translate + scale each frame.
-   transform-origin: 0 0 means scaling grows outward from the grid center,
-   which mirrors Zim's normalize("reg", CENTER). */
+/* transform-origin: 0 0 so scaling grows outward from the grid center */
 .co-wrap {
   position: absolute;
   top: 0;
@@ -39,8 +36,7 @@ ease-in-out makes the rotation accelerate and decelerate smoothly.*/
   transform-origin: 0 0;
 }
 
-/* The circle itself is centered on its wrapper's origin point
-   via translate(-50%, -50%) */
+/* translate(-50%, -50%) centers the circle on the wrapper's origin point */
 .co-circle {
   position: absolute;
   border-radius: 50%;

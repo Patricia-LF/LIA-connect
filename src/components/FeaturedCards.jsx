@@ -28,7 +28,6 @@ export default function FeaturedCards({ selectedInterests = [], isStudent }) {
     if (Math.abs(scrollVelocity.current) > STEP_THRESHOLD) {
       const now = performance.now();
       if (now - lastStepTime.current < 300) {
-        // För tidigt — vänta lite till
         scrollRaf.current = requestAnimationFrame(tickScroll);
         return;
       }
@@ -81,7 +80,6 @@ export default function FeaturedCards({ selectedInterests = [], isStudent }) {
       return;
     }
 
-    // Sätt velocity till ett fast värde istället för att addera
     const direction = Math.sign(e.deltaY);
     scrollVelocity.current = direction * STEP_THRESHOLD * 1.5;
 
@@ -107,20 +105,13 @@ export default function FeaturedCards({ selectedInterests = [], isStudent }) {
     if (dy > 40) {
       setActiveIndex((prev) => Math.min(prev + 1, n - 1));
       lastTouchStep.current = now;
-      touchStartY.current = e.touches[0].clientY; // återställ startpunkt
+      touchStartY.current = e.touches[0].clientY; // reset start point
     } else if (dy < -40) {
       setActiveIndex((prev) => Math.max(prev - 1, 0));
       lastTouchStep.current = now;
-      touchStartY.current = e.touches[0].clientY; // återställ startpunkt
+      touchStartY.current = e.touches[0].clientY; // reset start point
     }
   };
-
-  /*  const handleTouchEnd = (e) => {
-    if (expandedIndex !== null) return;
-    const dy = touchStartY.current - e.changedTouches[0].clientY;
-    if (dy > 40) setActiveIndex((prev) => Math.min(prev + 1, n - 1));
-    else if (dy < -40) setActiveIndex((prev) => Math.max(prev - 1, 0));
-  }; */
 
   useEffect(() => {
     const el = viewportRef.current;
@@ -128,13 +119,11 @@ export default function FeaturedCards({ selectedInterests = [], isStudent }) {
 
     el.addEventListener("wheel", handleWheel, { passive: false });
     el.addEventListener("touchstart", handleTouchStart, { passive: true });
-    /*   el.addEventListener("touchend", handleTouchEnd); */
     el.addEventListener("touchmove", handleTouchMove, { passive: false });
 
     return () => {
       el.removeEventListener("wheel", handleWheel);
       el.removeEventListener("touchstart", handleTouchStart);
-      /*       el.removeEventListener("touchend", handleTouchEnd); */
       el.removeEventListener("touchmove", handleTouchMove);
     };
   }, [expandedIndex, n, tickScroll, activeIndex]);

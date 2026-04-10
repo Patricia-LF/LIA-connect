@@ -4,10 +4,10 @@ import styles from "./CircleOrganism.module.css";
 // --- Tweak these constants to adjust the animation ---
 const COLS = 4; // number of columns in the grid
 const ROWS = 4; // number of rows in the grid
-const SPACING_X = 28.8; // horizontal spacing between circles (px) // 72 * 0.55 ≈ 40
+const SPACING_X = 28.8; // horizontal spacing between circles (px) // 72 * 0.40 ≈ 28.8
 
-const GAP_MIN = 8.8; // minimum vertical gap between rows (px) — when circles are smallest // 22 * 0.55 ≈ 12
-const GAP_MAX = 38; // maximum vertical gap between rows (px) — when circles are largest // 95 * 0.55 ≈ 52
+const GAP_MIN = 8.8; // minimum vertical gap between rows (px) — when circles are smallest // 22 * 0.40 ≈ 8.8
+const GAP_MAX = 38; // maximum vertical gap between rows (px) — when circles are largest // 95 * 0.40 ≈ 38
 
 const SCALE_MIN = 0.3; // smallest scale a circle reaches during its pulse
 const SCALE_MAX = 1.5; // largest scale a circle reaches during its pulse
@@ -25,8 +25,6 @@ const FALLBACK_COLORS = [
   "#672D6A",
   "#016098",
 ];
-
-// -----------------------------------------------------
 
 function random(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;

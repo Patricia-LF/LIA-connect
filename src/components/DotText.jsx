@@ -1,3 +1,6 @@
+//DotText.jsx
+//Animation of LIA Connect in hero on StartPage
+
 import { useEffect, useRef } from "react";
 
 export default function DotText() {
@@ -157,6 +160,7 @@ const COLORS = [
   "#1F5533",
   "#001a52",
   "#e51536",
+  "#fff835",
 ];
 
 const DT_DOT = 14;
@@ -166,7 +170,7 @@ const DT_CHAR_W = 5;
 const DT_SPACING = 2;
 const FINAL_COLOR = { r: 0, g: 26, b: 82 };
 const CHAR_SPACING_MAP = {
-  c: 0,
+  c: 0, //Spacing 0 after c to avoid big gap between c and t in Connect
   i: 1,
   l: 1,
 };
@@ -219,12 +223,6 @@ function dtBuildDots(line1, line2) {
   return { dots, canvasW, canvasH };
 }
 
-/* function dtHexToRgb(hex) {
-  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-  if (!result) return "255,255,255";
-  return `${parseInt(result[1], 16)},${parseInt(result[2], 16)},${parseInt(result[3], 16)}`;
-} */
-
 //Init
 function initDotText(
   canvas,
@@ -255,7 +253,7 @@ function initDotText(
     const elapsed = ts - start;
     ctx.clearRect(0, 0, canvasW, canvasH);
 
-    // Beräkna flickerPhase och blinkSpeed en gång per frame, inte per prick
+    // Calculate flickerPhase and blinkSpeed once per frame, not per dot
     const flickerPhase = Math.pow(Math.min(1, elapsed / 8000), 2);
     const blinkSpeed = 1 - flickerPhase;
 
@@ -267,7 +265,7 @@ function initDotText(
       if (progress < 1) {
         opacity = progress;
       } else if (flickerPhase > 0.99) {
-        opacity = 1; // stabil opacity när animationen är klar
+        opacity = 1; // stable opacity when animation is finished
       } else {
         const seed = x * 13 + y * 7;
         const b =
@@ -277,7 +275,7 @@ function initDotText(
         opacity = 0.55 + 0.45 * ((b + 1) / 2);
       }
 
-      // Färg
+      // Color
       const seed = x * 13 + y * 7;
       const wave =
         Math.sin((ts * (1 + blinkSpeed * 3)) / 1200 + seed * 0.3) +
@@ -292,10 +290,6 @@ function initDotText(
       const gA = parseInt(colorA.slice(3, 5), 16);
       const bA = parseInt(colorA.slice(5, 7), 16);
 
-      /* const r = lerp(rA, FINAL_COLOR.r, flickerPhase);
-      const g = lerp(gA, FINAL_COLOR.g, flickerPhase);
-      const b2 = lerp(bA, FINAL_COLOR.b, flickerPhase); */
-
       const r =
         flickerPhase > 0.99
           ? FINAL_COLOR.r
@@ -309,7 +303,7 @@ function initDotText(
           ? FINAL_COLOR.b
           : lerp(bA, FINAL_COLOR.b, flickerPhase);
 
-      // Rita pricken
+      // Paint dot
       const radius = (DT_DOT / 2) * (0.4 + 0.6 * progress);
       ctx.beginPath();
       ctx.arc(x, y, radius, 0, Math.PI * 2);

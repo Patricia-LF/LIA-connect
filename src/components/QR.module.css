@@ -1,4 +1,6 @@
 /* QRDrawer.module.css */
+
+/* z-index 99 keeps the overlay below the drawer (z-index 100) */
 .overlay {
   position: fixed;
   inset: 0;
@@ -6,6 +8,7 @@
   background: transparent;
 }
 
+/* Hidden off-screen by default, slides in when .open is applied */
 .drawer {
   position: fixed;
   right: -280px;
@@ -27,6 +30,7 @@
   right: 0;
 }
 
+/* Tab sticks out to the left of the drawer — writing-mode rotates the text vertically */
 .tab {
   position: absolute;
   left: -40px;

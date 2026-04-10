@@ -1,3 +1,7 @@
+// Spinner.jsx
+// 8 dots arranged in a circle, each with a staggered fade animation.
+// Colors match the interest categories.
+
 import styles from "./Spinner.module.css";
 
 const COLORS = [
