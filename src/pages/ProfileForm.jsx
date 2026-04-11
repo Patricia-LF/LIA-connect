@@ -50,14 +50,11 @@ export default function ProfileForm({ profileData, setProfileData }) {
   const [isLoading, setIsLoading] = useState(false);
 
   const isValid =
-    profileData.name.trim() &&
-    profileData.interests.length > 0 &&
-    (!isStudent || profileData.education);
+    /* profileData.name.trim() && */
+    profileData.interests.length > 0; /* &&
+    (!isStudent || profileData.education); */
 
   function handleSubmit() {
-    if (!profileData.name.trim()) return;
-    if (isStudent && !profileData.education) return;
-    if (!isStudent && !profileData.company.trim()) return;
     if (profileData.interests.length === 0) return;
     setIsLoading(true);
     setTimeout(() => navigate("/result"), 800); // liten fördröjning för känslan

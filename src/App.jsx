@@ -46,11 +46,8 @@ export default function App() {
         <Route
           path="/result"
           element={
-            profileData.name ? (
-              <ResultPage
-                profileData={profileData}
-                setProfileData={setProfileData}
-              />
+            profileData.interests.length > 0 ? (
+              <ResultPage profileData={profileData} />
             ) : (
               <Navigate to="/" replace />
             )
