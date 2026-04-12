@@ -33,8 +33,6 @@ export default function StartPage({ profileData, setProfileData }) {
         <div className={styles.title}>
           <DotText />
         </div>
-        {/*         <h1 className={styles.title}>LIA</h1>
-        <h1 className={styles.title}>Connect</h1> */}
         <h3 className={styles.subtitle}>Connecting The Dots</h3>
         <div className={styles.details}>
           <p className={styles.time}>13:00-17:00</p>
