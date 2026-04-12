@@ -49,16 +49,12 @@ export default function ProfileForm({ profileData, setProfileData }) {
 
   const [isLoading, setIsLoading] = useState(false);
 
-  const isValid =
-    /* profileData.name.trim() && */
-    profileData.interests.length > 0; /* &&
-    (!isStudent || profileData.education); */
+  const isValid = profileData.interests.length > 0;
 
   function handleSubmit() {
     if (profileData.interests.length === 0) return;
     setIsLoading(true);
     setTimeout(() => navigate("/result"), 800); // liten fördröjning för känslan
-    /* navigate("/result"); */
   }
 
   if (isLoading) return <Spinner />;
