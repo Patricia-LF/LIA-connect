@@ -18,12 +18,12 @@ export default function StartPage({ profileData, setProfileData }) {
     {
       number: 2,
       title: "Få din profil",
-      text: "Få kort med samtalsfrågor och färger som representerar dina val",
+      text: "Du får en visuell profil som speglar dina val",
     },
     {
       number: 3,
       title: "Matcha och prata",
-      text: "Hitta andra med liknande profil och börja mingla",
+      text: "Hitta andra med liknande profil och få samtalsfrågor",
     },
   ];
 
@@ -43,7 +43,7 @@ export default function StartPage({ profileData, setProfileData }) {
       </section>
 
       <section className={styles.intro}>
-        <h2 className={styles.subtitle}>Hitta rätt personer att prata med</h2>
+        <h2 className={styles.subtitle}>Hitta rätt personer att prata med.</h2>
         <h4 className={styles.introText}>
           Välj dina områden, få en visuell profil och matcha med andra på
           eventet.
