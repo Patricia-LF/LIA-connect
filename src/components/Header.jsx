@@ -21,7 +21,12 @@ export default function Header() {
         </button>
       )}
 
-      <img className={styles.logo} src={logo} alt="Logo" />
+      <img
+        className={styles.logo}
+        src={logo}
+        alt="Logo"
+        onClick={() => navigate("/")}
+      />
     </header>
   );
 }
