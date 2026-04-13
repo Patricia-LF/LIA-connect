@@ -18,12 +18,12 @@ export default function StartPage({ profileData, setProfileData }) {
     {
       number: 2,
       title: "Få din profil",
-      text: "Du får en visuell profil som speglar dina val",
+      text: "Få kort med samtalsfrågor och färger som representerar dina val",
     },
     {
       number: 3,
       title: "Matcha och prata",
-      text: "Hitta andra med liknande profil och få samtalsfrågor",
+      text: "Hitta andra med liknande profil och börja mingla",
     },
   ];
 
