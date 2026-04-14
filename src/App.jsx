@@ -6,15 +6,21 @@ import ProfileForm from "./pages/ProfileForm";
 import ResultPage from "./pages/ResultPage";
 import ScrollToTop from "./components/ScrollToTop";
 
+const initialProfileData = {
+  role: "",
+  name: "",
+  education: "", // used by students
+  company: "",
+  interests: [], // array of interest-id:s
+  portfolioUrl: "",
+};
+
 export default function App() {
-  const [profileData, setProfileData] = useState({
-    role: "",
-    name: "",
-    education: "", // used by students
-    company: "",
-    interests: [], // array of interest-id:s
-    portfolioUrl: "",
-  });
+  const [profileData, setProfileData] = useState(initialProfileData);
+
+  function resetProfileData() {
+    setProfileData(initialProfileData);
+  }
 
   return (
     <BrowserRouter>
@@ -27,6 +33,7 @@ export default function App() {
             <StartPage
               profileData={profileData}
               setProfileData={setProfileData}
+              resetProfileData={resetProfileData}
             />
           }
         />
