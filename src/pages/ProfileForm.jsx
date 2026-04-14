@@ -6,6 +6,7 @@ import styles from "./ProfileForm.module.css";
 import Button from "../components/Button";
 import Spinner from "../components/Spinner";
 import { useEffect } from "react";
+import Dropdown from "../components/Dropdown";
 
 export default function ProfileForm({ profileData, setProfileData }) {
   useEffect(() => {
@@ -17,22 +18,16 @@ export default function ProfileForm({ profileData, setProfileData }) {
 
   const navigate = useNavigate();
   const isStudent = profileData.role === "student";
-  const [showSuggestions, setShowSuggestions] = useState(false);
-
-  const filtered = companies.filter((c) =>
-    c.name.toLowerCase().startsWith(profileData.company.toLowerCase()),
-  );
 
   function handleNameChange(e) {
     setProfileData((prev) => ({ ...prev, name: e.target.value }));
   }
 
-  function handleEducationChange(e) {
-    setProfileData((prev) => ({ ...prev, education: e.target.value }));
-  }
-
-  function handleCompanyChange(e) {
-    setProfileData((prev) => ({ ...prev, company: e.target.value }));
+  function handleInputChange(field, value) {
+    setProfileData((prev) => ({
+      ...prev,
+      [field]: value,
+    }));
   }
 
   function toggleInterest(id) {
@@ -90,59 +85,26 @@ export default function ProfileForm({ profileData, setProfileData }) {
             {isStudent ? "Utbildning" : "Företag"}
           </label>
           {isStudent ? (
-            <select
-              id={isStudent ? "education" : "company"}
-              className={styles["field-select"]}
+            <Dropdown
               value={profileData.education}
-              onChange={handleEducationChange}
-            >
-              <option value="">Välj utbildning</option>
-              <option value="webbutveckling">Webbutveckling</option>
-              <option value="digital-design">Digital Design</option>
-            </select>
+              onChange={(value) => handleInputChange("education", value)}
+              placeholder="Välj utbildning"
+              options={[
+                { label: "Webbutveckling", value: "webbutveckling" },
+                { label: "Digital Design", value: "digital-design" },
+              ]}
+            />
           ) : (
-            <>
-              <div className={styles["company-wrapper"]}>
-                <input
-                  id="education"
-                  type="text"
-                  className={styles.fieldInput}
-                  placeholder="Ange företag..."
-                  value={profileData.company}
-                  onChange={(e) => {
-                    handleCompanyChange(e);
-                    setShowSuggestions(true);
-                  }}
-                  onFocus={(e) => {
-                    e.target.select();
-                    setShowSuggestions(true);
-                  }}
-                  onBlur={() =>
-                    setTimeout(() => setShowSuggestions(false), 150)
-                  }
-                  autoComplete="off"
-                />
-                <span className={styles["company-arrow"]}>▾</span>
-                {showSuggestions && filtered.length > 0 && (
-                  <ul className={styles["company-suggestions"]}>
-                    {filtered.map((company) => (
-                      <li
-                        key={company.id}
-                        onMouseDown={() => {
-                          setProfileData((prev) => ({
-                            ...prev,
-                            company: company.name,
-                          }));
-                          setShowSuggestions(false);
-                        }}
-                      >
-                        {company.name}
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </div>
-            </>
+            <Dropdown
+              value={profileData.company}
+              searchable
+              placeholder="Ange företag..."
+              options={companies.map((c) => ({
+                label: c.name,
+                value: c.name,
+              }))}
+              onChange={(value) => handleInputChange("company", value)}
+            />
           )}
         </div>
 
