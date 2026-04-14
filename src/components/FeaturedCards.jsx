@@ -155,62 +155,68 @@ export default function FeaturedCards({ selectedInterests = [], isStudent }) {
     <div className={styles["fc-root"]}>
       {/* Expanded card */}
       {expandedIndex !== null && selectedInterests[expandedIndex] && (
-        <div
-          className={styles["fc-expanded"]}
-          style={{ background: selectedInterests[expandedIndex].color }}
-        >
-          <p className={styles.interestOverlay}>
-            {selectedInterests[expandedIndex].bigLabel}
-          </p>
-          <div className={styles["fc-container"]}>
-            <div className={styles["fc-label-container"]}>
-              <div className={styles["fc-overlay-label-container"]}>
-                <span className={styles["fc-overlay-label"]}>
-                  {selectedInterests[expandedIndex].label}
-                </span>
-                <span
-                  className={styles["fc-close"]}
-                  onClick={() => setExpandedIndex(null)}
-                >
-                  <img src={close} />
-                </span>
-              </div>
-              <div className={styles.labelLine}></div>
-            </div>
-            <span className={styles.areas}>
-              {selectedInterests[expandedIndex].areas?.join(" ")}
-            </span>
-          </div>
-          <div className={styles.questions}>
-            <h3 className={styles["q-title"]}>
-              {isStudent
-                ? "Bra att prata om"
-                : "Frågor att ställa till studenter"}
-            </h3>
-            <ul className={styles["fc-questions"]}>
-              {questions.map((q, i) => (
-                <li key={i} className={styles["fc-q"]}>
-                  {q}
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className={styles.attributes}>
-            <p>
-              {" "}
-              {isStudent
-                ? "Det här söker företagen"
-                : "Det här kan studenter bidra med"}
+        <>
+          <div
+            className={styles["fc-overlay"]}
+            onClick={() => setExpandedIndex(null)}
+          />
+          <div
+            className={styles["fc-expanded"]}
+            style={{ background: selectedInterests[expandedIndex].color }}
+          >
+            <p className={styles.interestOverlay}>
+              {selectedInterests[expandedIndex].bigLabel}
             </p>
-            <ul className={styles["fc-attributes"]}>
-              {selectedInterests[expandedIndex].attributes?.map((a, i) => (
-                <li key={i} className={styles["fc-a"]}>
-                  {a}
-                </li>
-              ))}
-            </ul>
+            <div className={styles["fc-container"]}>
+              <div className={styles["fc-label-container"]}>
+                <div className={styles["fc-overlay-label-container"]}>
+                  <span className={styles["fc-overlay-label"]}>
+                    {selectedInterests[expandedIndex].label}
+                  </span>
+                  <span
+                    className={styles["fc-close"]}
+                    onClick={() => setExpandedIndex(null)}
+                  >
+                    <img src={close} />
+                  </span>
+                </div>
+                <div className={styles.labelLine}></div>
+              </div>
+              <span className={styles.areas}>
+                {selectedInterests[expandedIndex].areas?.join(" ")}
+              </span>
+            </div>
+            <div className={styles.questions}>
+              <h3 className={styles["q-title"]}>
+                {isStudent
+                  ? "Bra att prata om"
+                  : "Frågor att ställa till studenter"}
+              </h3>
+              <ul className={styles["fc-questions"]}>
+                {questions.map((q, i) => (
+                  <li key={i} className={styles["fc-q"]}>
+                    {q}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className={styles.attributes}>
+              <p>
+                {" "}
+                {isStudent
+                  ? "Det här söker företagen"
+                  : "Det här kan studenter bidra med"}
+              </p>
+              <ul className={styles["fc-attributes"]}>
+                {selectedInterests[expandedIndex].attributes?.map((a, i) => (
+                  <li key={i} className={styles["fc-a"]}>
+                    {a}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
-        </div>
+        </>
       )}
 
       {/* Card stack */}

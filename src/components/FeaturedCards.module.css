@@ -110,6 +110,12 @@
   pointer-events: all;
 }
 
+.fc-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10; /* has to be lower then fc-expanded */
+}
+
 /*Expanded/open card*/
 .fc-expanded {
   position: relative;
@@ -123,6 +129,7 @@
   animation: expandIn 0.4s cubic-bezier(0.22, 1, 0.36, 1);
   overflow: hidden;
   margin-bottom: 10px;
+  z-index: 11;
 }
 
 @keyframes expandIn {
