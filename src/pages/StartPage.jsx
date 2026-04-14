@@ -1,13 +1,16 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./StartPage.module.css";
 import Button from "../components/Button";
 import { useNavigate } from "react-router-dom";
 import Step from "../components/Step";
 import DotText from "../components/DotText";
 
-export default function StartPage({ profileData, setProfileData }) {
-  const [role, setRole] = useState(null);
+export default function StartPage({ resetProfileData, setProfileData }) {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    resetProfileData();
+  }, []);
 
   const steps = [
     {
