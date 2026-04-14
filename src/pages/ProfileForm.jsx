@@ -129,7 +129,9 @@ export default function ProfileForm({ profileData, setProfileData }) {
 
         <div className={styles["interests-section"]}>
           <p className={styles["interests-hint"]}>
-            {isStudent ? "Välj dina intressen" : "Välj era arbetsområden"}
+            {isStudent
+              ? "Välj dina intressen (minst 1 krävs)"
+              : "Välj era arbetsområden (minst 1 krävs)"}
           </p>
 
           <div className={styles["interests-grid"]}>
