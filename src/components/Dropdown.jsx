@@ -3,6 +3,7 @@ import styles from "../pages/ProfileForm.module.css";
 import caret from "../assets/caret.svg";
 
 export default function Dropdown({
+  id,
   value,
   onChange,
   options,
@@ -23,6 +24,7 @@ export default function Dropdown({
   return (
     <div className={styles["dropdown-wrapper"]}>
       <input
+        id={id}
         type="text"
         className={styles.fieldInput}
         placeholder={placeholder}

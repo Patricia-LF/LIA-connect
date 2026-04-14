@@ -86,6 +86,7 @@ export default function ProfileForm({ profileData, setProfileData }) {
           </label>
           {isStudent ? (
             <Dropdown
+              id="education"
               value={profileData.education}
               onChange={(value) => handleInputChange("education", value)}
               placeholder="Välj utbildning"
@@ -96,6 +97,7 @@ export default function ProfileForm({ profileData, setProfileData }) {
             />
           ) : (
             <Dropdown
+              id="company"
               value={profileData.company}
               searchable
               placeholder="Ange företag..."
