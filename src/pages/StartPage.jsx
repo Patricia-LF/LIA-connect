@@ -38,8 +38,8 @@ export default function StartPage({ resetProfileData, setProfileData }) {
         </div>
         <h3 className={styles.subtitle}>Connecting The Dots</h3>
         <div className={styles.details}>
-          <p className={styles.time}>15:00-16:30</p>
-          <p className={styles.location}>Lindholmspiren 3</p>
+          <p className={styles.time}>22 april, 15:00-16:30</p>
+          <p className={styles.location}>Visual Arena, Lindholmspiren 3</p>
         </div>
       </section>
 
