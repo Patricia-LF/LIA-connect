@@ -219,6 +219,8 @@ function dtBuildDots(line1, line2) {
   addLine(line2, 9);
 
   const canvasW = totalCols * DT_STEP;
+
+  // Canvas height: 9 rows gap between lines + 7 rows per character + dot padding
   const canvasH = (9 + 7) * DT_STEP + DT_DOT * 2;
   return { dots, canvasW, canvasH };
 }
@@ -267,6 +269,8 @@ function initDotText(
       } else if (flickerPhase > 0.99) {
         opacity = 1; // stable opacity when animation is finished
       } else {
+        // Seed spreads dots across different animation phases — 13 and 7 are primes
+        // chosen to minimize repeating patterns across the grid
         const seed = x * 13 + y * 7;
         const b =
           Math.sin(ts / 700 + seed) *
