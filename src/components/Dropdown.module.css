@@ -1,0 +1,51 @@
+.fieldInput {
+  color: var(--Main-Blue);
+  height: 40px;
+  padding: 0px 15.5px;
+  border: 1.348px solid var(--Main-Blue);
+  background: var(--Main-grey);
+  font-family: var(--inter);
+  width: 100%;
+}
+
+/* position: relative needed so the suggestions list and arrow can be absolutely positioned inside */
+.dropdown-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.dropdown-suggestions {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  list-style: none;
+  margin: 4px 0 0;
+  padding: 0;
+  z-index: 10;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.dropdown-suggestions li {
+  padding: 10px 14px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.dropdown-suggestions li:hover {
+  background: #f5f5f5;
+}
+
+/* pointer-events: none so the arrow doesn't block clicks on the input */
+.dropdown-arrow {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  font-size: 1rem;
+}

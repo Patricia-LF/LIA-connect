@@ -1,5 +1,5 @@
 import { useState } from "react";
-import styles from "../pages/ProfileForm.module.css";
+import styles from "./Dropdown.module.css";
 import caret from "../assets/caret.svg";
 
 export default function Dropdown({
